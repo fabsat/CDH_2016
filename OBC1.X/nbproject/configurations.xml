@@ -12,6 +12,7 @@
       <itemPath>system_protocol.h</itemPath>
       <itemPath>uint8_to_string.h</itemPath>
       <itemPath>uart_serial.h</itemPath>
+      <itemPath>OBC1_app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +29,7 @@
       <itemPath>uart_serial.c</itemPath>
       <itemPath>system_protocol.c</itemPath>
       <itemPath>uint8_to_string.c</itemPath>
+      <itemPath>OBC1_app.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -49,7 +51,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.35</languageToolchainVersion>
-        <platform>4</platform>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

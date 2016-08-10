@@ -1,17 +1,17 @@
 
 # 1 "spi_master.c"
 
-# 26 "/Applications/microchip/xc8/v1.35/include/htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "/Applications/microchip/xc8/v1.35/include/xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "/Applications/microchip/xc8/v1.35/include/pic16f877a.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -1411,21 +1411,21 @@ extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
 
 
-# 27 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
 # 76
 extern unsigned int flash_read(unsigned short addr);
 
-# 41 "/Applications/microchip/xc8/v1.35/include/eeprom_routines.h"
+# 41 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 149 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 149 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
@@ -1453,17 +1453,16 @@ typedef enum
 {
 CW_TYPE = 0x01,
 DATA_TYPE,
-COMMAND_TYPE,
 } data_type_t;
 
-# 40
+# 39
 typedef enum
 {
 DATA_END = 0b00010000,
 DATA_CONTINUE,
 } data_end_command_t;
 
-# 52
+# 51
 typedef struct
 {
 uint8_t power1[2];
@@ -1478,33 +1477,36 @@ uint8_t powmcu:1;
 
 extern cw_t cw;
 
-# 105
+# 101
 void sysprot_init(void);
 
 void cw_set(void);
 
-# 133
+# 129
 uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
 
-# 146
+# 142
 void cw_data_set(cw_t *p_cw_data);
 
-# 161
+# 157
 void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
 
+# 170
+void receive_data_master(destination_t destination);
 
-void show_packet(void);
-
-# 51 "spi_master.h"
+# 49 "spi_master.h"
 void spi_master_start(void);
 
-# 64
+# 62
 uint8_t spi_master_receive(destination_t destination);
 
-# 79
+# 77
+void spi_master_send_int(destination_t destination, uint8_t data);
+
+# 90
 void spi_master_send(destination_t destination, uint8_t data);
 
-# 92
+# 103
 void spi_master_stop(void);
 
 # 36 "spi_master.c"
@@ -1516,7 +1518,6 @@ TRISCbits.TRISC5 = 0;
 TRISCbits.TRISC4 = 1;
 
 
-TRISCbits.TRISC2 = 0;
 TRISCbits.TRISC0 = 0;
 TRISCbits.TRISC1 = 0;
 
@@ -1535,7 +1536,6 @@ SSPCONbits.SSPM1 = 0;
 SSPCONbits.SSPM0 = 0;
 
 
-PORTCbits.RC2 = 1;
 PORTCbits.RC0 = 1;
 PORTCbits.RC1 = 1;
 
@@ -1543,7 +1543,7 @@ PORTCbits.RC1 = 1;
 SSPCONbits.SSPEN = 1;
 }
 
-# 82
+# 80
 uint8_t spi_master_receive(destination_t destination)
 {
 uint8_t dummy;
@@ -1555,9 +1555,6 @@ dummy = SSPBUF;
 
 switch(destination)
 {
-case OBC2:
-while(PORTDbits.RD2 == 0){;}
-break;
 case COM:
 while(PORTDbits.RD0 == 0){;}
 break;
@@ -1569,9 +1566,6 @@ break;
 
 switch(destination)
 {
-case OBC2:
-PORTCbits.RC2 = 0;
-break;
 case COM:
 PORTCbits.RC0 = 0;
 break;
@@ -1601,9 +1595,6 @@ timeout_counter--;
 
 switch(destination)
 {
-case OBC2:
-PORTCbits.RC2 = 1;
-break;
 case COM:
 PORTCbits.RC0 = 1;
 break;
@@ -1615,8 +1606,8 @@ break;
 return SSPBUF;
 }
 
-# 165
-void spi_master_send(destination_t destination, uint8_t data)
+# 154
+void spi_master_send_int(destination_t destination, uint8_t data)
 {
 uint8_t dummy;
 uint16_t timeout_counter = 1000;
@@ -1625,25 +1616,9 @@ uint16_t timeout_counter = 1000;
 dummy = SSPBUF;
 
 
-switch(destination)
-{
-case OBC2:
-while(PORTDbits.RD2 == 0){;}
-break;
-case COM:
-while(PORTDbits.RD0 == 0){;}
-break;
-case POW:
-while(PORTDbits.RD1 == 0){;}
-break;
-}
-
 
 switch(destination)
 {
-case OBC2:
-PORTCbits.RC2 = 0;
-break;
 case COM:
 PORTCbits.RC0 = 0;
 break;
@@ -1653,9 +1628,10 @@ break;
 }
 
 
+
 SSPBUF = data;
 
-
+# 192
 while(SSPSTATbits.BF == 0)
 {
 
@@ -1672,9 +1648,6 @@ timeout_counter--;
 
 switch(destination)
 {
-case OBC2:
-PORTCbits.RC2 = 1;
-break;
 case COM:
 PORTCbits.RC0 = 1;
 break;
@@ -1687,14 +1660,87 @@ break;
 dummy = SSPBUF;
 }
 
-# 247
+# 232
+void spi_master_send(destination_t destination, uint8_t data)
+{
+uint8_t dummy;
+uint16_t timeout_counter = 1000;
+
+
+dummy = SSPBUF;
+
+
+switch(destination)
+{
+case COM:
+while(PORTDbits.RD0 == 0){;}
+break;
+case POW:
+while(PORTDbits.RD1 == 0){;}
+break;
+}
+
+
+switch(destination)
+{
+case COM:
+PORTCbits.RC0 = 0;
+break;
+case POW:
+PORTCbits.RC1 = 0;
+break;
+}
+
+
+
+SSPBUF = data;
+
+
+
+
+while(SSPSTATbits.BF == 0)
+{
+PIE1bits.TMR1IE = 1;
+T1CONbits.TMR1ON = 1;
+
+
+if(timeout_counter == 0)
+{
+return;
+}
+
+
+_delay((unsigned long)((300)*(20000000/4000000.0)));
+timeout_counter--;
+}
+PIR1bits.TMR1IF = 0;
+PIE1bits.TMR1IE = 0;
+T1CONbits.TMR1ON = 0;
+
+
+
+switch(destination)
+{
+case COM:
+PORTCbits.RC0 = 1;
+break;
+case POW:
+PORTCbits.RC1 = 1;
+break;
+}
+
+
+dummy = SSPBUF;
+}
+
+# 314
 void spi_master_stop(void)
 {
 
-PORTCbits.RC2 = 0;
 PORTCbits.RC0 = 0;
 PORTCbits.RC1 = 0;
 
 
 SSPCONbits.SSPEN = 0;
 }
+

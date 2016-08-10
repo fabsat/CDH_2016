@@ -20,10 +20,6 @@
 #include "system_protocol.h"
 #include "spi_master.h"
 
-//add
-#include "uart_serial.h"
-#include "uint8_to_string.h"
-
 #include "AD_value.h"
 #include "plati_temp.h"
 
@@ -74,7 +70,6 @@ static void packet_receive_master(destination_t destination, packet_format_t *p_
  *****************************************************************************************/
 /* このグローバル変数のパケットに各種データを格納していく データが送信されたら初期化される */
 static packet_format_t packet = PACKET_INIT;
-//static packet_format_t receive_packet = PACKET_INIT;
 
 /* データの格納できる先頭インデックスを示す データが送信されたら初期化される */
 static uint8_t index_pos;
@@ -84,6 +79,39 @@ static uint8_t index_pos;
 /******************************************************************************************
  *                                     ライブラリ関数                                      *
  *****************************************************************************************/
+
+
+/*system_protocol初期設定関数*/
+void sysprot_init(void)
+{
+    COM_READY_PIN_TRIS  = 1;
+    POW_READY_PIN_TRIS  = 1;
+    
+    //他にあれば随時追加します
+}
+
+
+void get_cw_data(void)
+{
+    uint16_t buf;
+    
+    spi_master_start();
+    cw.power1[0] = spi_master_receive(POW);
+    cw.power1[1] = spi_master_receive(POW);
+    cw.power2[0] = spi_master_receive(POW);
+    cw.power2[1] = spi_master_receive(POW);
+    cw.power3[0] = spi_master_receive(POW);
+    cw.power3[1] = spi_master_receive(POW);
+    cw.power4[0] = spi_master_receive(POW);
+    cw.power4[1] = spi_master_receive(POW);
+    cw.power5[0] = spi_master_receive(POW);
+    cw.power5[1] = spi_master_receive(POW);
+    buf = get_adcon();
+    cw.temp[0] = (uint8_t)(buf >> 8);
+    cw.temp[1] = (uint8_t)(buf & 0b00000000111111111);
+    cw.obc2 = 1;
+    cw.powmcu = 1;
+}
 
 
 /*=====================================================
@@ -151,7 +179,7 @@ uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data)
  *===================================================*/
 void cw_data_set(cw_t *p_cw_data)
 {
-    //uint8_t i;
+    uint8_t i;
     
     /* 電源データの格納 */
     uint8_data_set(&(p_cw_data->power1), 2);
@@ -190,24 +218,21 @@ void send_data_master(destination_t destination, data_type_t data_type, data_end
 {
     packet.data_type        = (uint8_t)data_type;
     packet.data_end_command = (uint8_t)data_end_command;
-
     packet_send_master(destination, &packet);
 }
 
 
 /*=====================================================
  * @brief
- *     指定したサブシステムにデータを受信する(Master用)
+ *     指定したサブシステムからデータを受信する(Master用)
  * @param
  *     destination     :送信元
- *     data_type       :payloadに格納したデータのタイプ
- *     data_end_command:データはまだ継続するかどうか
  * @return
  *     void:
  * @note
  *     この関数実行後にsetしたデータ内容は初期化される
  *===================================================*/
-void receive_data_master(destination_t destination, uint8_t from_MCU)
+void receive_data_master(destination_t destination)
 {   
     packet_receive_master(destination, &packet);
 }
@@ -287,8 +312,7 @@ static void double_data_set(double *p_data, uint8_t data_len)
 
     while(data_len)                               // data_lenが0になるまで
     {
-        //double_to_byte_array(p_data++, buf);      // payload用フォーマットに変換する
-        double_to_byte_array(p_data, buf);      // payload用フォーマットに変換する
+        double_to_byte_array(p_data++, buf);      // payload用フォーマットに変換する
 
         for(i = 0; i < 5; i++)
         {
@@ -466,31 +490,19 @@ static void packet_receive_master(destination_t destination, packet_format_t *p_
 {
     uint8_t use_obc = 0x00;
     
-    /* 受信元のMCU */
+    /*受信元のMCU*/
     use_obc = spi_master_receive(destination);
 
-    /* 受信データをdata_typeに格納 */
+    /*受信データをdata_typeに格納*/
     packet.data_type = spi_master_receive(destination);
 
-    /* 受信データをpayloadに格納 */
+    /*受信データをpayloadに格納*/
     receive_payload(destination);    
     
-    /* 受信データをdata_end_commandに格納 */
+    /*受信データをdata_end_commandに格納*/
     packet.data_end_command = spi_master_receive(destination);
 }
 
 
 
-/* パケット内確認用関数(デバッグ用) */
-void show_packet(void)
-{
-    uint8_t buf[4];
-    uint8_t i;
-    
-    for(i = 0; i < 30; i++)
-    {
-        uint8_to_string(packet.payload[i], buf, 4);
-        put_string(buf);
-        put_string("\r\n");
-    }
-}
+

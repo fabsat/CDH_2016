@@ -1,17 +1,17 @@
 
 # 1 "AD_value.c"
 
-# 26 "/Applications/microchip/xc8/v1.35/include/htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "/Applications/microchip/xc8/v1.35/include/xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "/Applications/microchip/xc8/v1.35/include/pic16f877a.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -1411,21 +1411,21 @@ extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
 
 
-# 27 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
 # 76
 extern unsigned int flash_read(unsigned short addr);
 
-# 41 "/Applications/microchip/xc8/v1.35/include/eeprom_routines.h"
+# 41 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 149 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 149 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
@@ -1460,6 +1460,7 @@ static void bit_shift(uint16_t *p_ad_value, adres_t *p_adres);
 # 49
 void ad_con_init(void)
 {
+
 PORTAbits.RA0 = 0;
 PORTAbits.RA3 = 0;
 TRISAbits.TRISA0 = 1;
@@ -1467,7 +1468,7 @@ TRISAbits.TRISA3 = 1;
 ADCON1 = 0b00000001;
 }
 
-# 70
+# 71
 static void bit_shift(uint16_t *p_ad_value, adres_t *p_adres)
 {
 const uint8_t bit_mask_for_l = 0b00000011;
@@ -1477,7 +1478,7 @@ const uint8_t bit_mask_for_l = 0b00000011;
 *p_ad_value |= (bit_mask_for_l & (p_adres->my_adres_l >> 6));
 }
 
-# 90
+# 91
 uint16_t get_adcon(void)
 {
 

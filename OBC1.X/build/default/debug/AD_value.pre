@@ -1,5 +1,5 @@
 
-# 1 "spi.c"
+# 1 "AD_value.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1434,193 +1434,70 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
-typedef unsigned size_t;
+# 28 "pic_clock.h"
+typedef unsigned char uint8_t;
+typedef signed char int8_t;
+typedef unsigned int uint16_t;
+typedef signed int int16_t;
 
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdarg.h"
-typedef void * va_list[1];
+# 35 "AD_value.h"
+void ad_con_init(void);
 
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
+# 48
+uint16_t get_adcon(void);
 
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
-struct __prbuf
+# 28 "AD_value.c"
+typedef struct
 {
-char * ptr;
-void (* func)(char);
-};
-
-# 25 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
+uint8_t my_adres_h;
+uint8_t my_adres_l;
+} adres_t;
 
 
 
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 27 "spi.h"
-typedef enum
-{
-SPI_ISR_ENABLE,
-SPI_ISR_DISABLE,
-} spi_isr_set_t;
+static void bit_shift(uint16_t *p_ad_value, adres_t *p_adres);
 
 # 49
-void spi_slave_init(spi_isr_set_t spi_isr);
-
-# 66
-char spi_send_receive(char data);
-
-# 79
-void spi_interrupt(void);
-
-# 39 "uart_serial.h"
-void uart_init();
-void putch(unsigned char byte);
-void put_string(unsigned char *str);
-unsigned char getch();
-unsigned char getche();
-
-# 26 "spi.c"
-static void spi_reset(void);
-
-# 42
-void spi_slave_init(spi_isr_set_t spi_isr)
+void ad_con_init(void)
 {
 
-TRISC3 = 1;
-TRISC4 = 1;
-TRISC5 = 0;
-TRISA5 = 1;
-ADCON0bits.ADON = 0;
-ADCON1bits.PCFG3 = 0;
-ADCON1bits.PCFG2 = 1;
-ADCON1bits.PCFG1 = 1;
+PORTAbits.RA0 = 0;
+PORTAbits.RA3 = 0;
+TRISAbits.TRISA0 = 1;
+TRISAbits.TRISA3 = 1;
+ADCON1 = 0b00000001;
+}
 
-
-SSPCONbits.SSPEN = 0;
-
-
-SSPSTATbits.SMP = 0;
-SSPCONbits.CKP = 0;
-SSPSTATbits.CKE = 0;
-
-
-SSPCONbits.SSPM3 = 0;
-SSPCONbits.SSPM2 = 1;
-SSPCONbits.SSPM1 = 0;
-SSPCONbits.SSPM0 = 0;
-
-
-if(spi_isr == SPI_ISR_ENABLE)
+# 71
+static void bit_shift(uint16_t *p_ad_value, adres_t *p_adres)
 {
-PIR1bits.SSPIF = 0;
-PIE1bits.SSPIE = 1;
-INTCONbits.PEIE = 1;
-INTCONbits.GIE = 1;
+const uint8_t bit_mask_for_l = 0b00000011;
+
+*p_ad_value = (uint16_t)(p_adres->my_adres_h);
+*p_ad_value <<= 2;
+*p_ad_value |= (bit_mask_for_l & (p_adres->my_adres_l >> 6));
 }
 
-
-SSPCONbits.SSPEN = 1;
-}
-
-# 92
-void spi_interrupt(void)
+# 91
+uint16_t get_adcon(void)
 {
-char data;
 
-data = SSPBUF;
+uint16_t ad_value = 0b0000000000;
+double voltage_value;
+adres_t my_adres;
 
-putch(data);
+
+ADCON0 = 0b10000001;
+ADCON0bits.GO_DONE = 1;
+
+
+while(ADCON0bits.GO_DONE){;}
+
+
+my_adres.my_adres_h = ADRESH;
+my_adres.my_adres_l = ADRESL;
+bit_shift(&ad_value, &my_adres);
+
+return ad_value;
 }
 
-# 117
-char spi_send_receive(char data)
-{
-char received_data;
-unsigned char timeout_counter = 0;
-unsigned char reset_counter = 0xFF;
-
-
-SSPBUF = data;
-
-
-while(SSPSTATbits.BF == 0)
-{
-printf("into while\r\n");
-
-if(reset_counter == 0x00 && timeout_counter < 2)
-{
-spi_reset();
-timeout_counter++;
-continue;
-}
-
-
-if(timeout_counter == 2)
-{
-return -1;
-}
-
-
-reset_counter--;
-}
-
-
-received_data = SSPBUF;
-SSPBUF = 0xFF;
-
-return received_data;
-}
-
-# 166
-static void spi_reset(void)
-{
-unsigned char dummy;
-
-SSPEN = 0;
-SSPEN = 1;
-dummy = SSPBUF;
-SSPIF = 0;
-SSPEN = 0;
-SSPEN = 1;
-}

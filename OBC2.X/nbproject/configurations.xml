@@ -4,11 +4,16 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>spi.h</itemPath>
+      <itemPath>spi_master.h</itemPath>
       <itemPath>pic_clock.h</itemPath>
-      <itemPath>uart_serial.h</itemPath>
-      <itemPath>i2c.h</itemPath>
+      <itemPath>system_protocol.h</itemPath>
       <itemPath>tempADT.h</itemPath>
+      <itemPath>i2c.h</itemPath>
+      <itemPath>OBC1_app.h</itemPath>
+      <itemPath>OBC2_app.h</itemPath>
+      <itemPath>uart_serial.h</itemPath>
+      <itemPath>uint8_to_string.h</itemPath>
+      <itemPath>MCLR_reset.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,11 +22,16 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>spi.c</itemPath>
-      <itemPath>OBC2_main.c</itemPath>
-      <itemPath>uart_serial.c</itemPath>
       <itemPath>i2c.c</itemPath>
+      <itemPath>OBC1_app.c</itemPath>
+      <itemPath>MCLR_reset.c</itemPath>
+      <itemPath>OBC2_app.c</itemPath>
+      <itemPath>sysytem_protocol.c</itemPath>
+      <itemPath>spi_master.c</itemPath>
       <itemPath>tempADT.c</itemPath>
+      <itemPath>uart_serial.c</itemPath>
+      <itemPath>uint8_to_string.c</itemPath>
+      <itemPath>OBC2_main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -29,6 +39,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

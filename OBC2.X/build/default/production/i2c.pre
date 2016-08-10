@@ -1462,6 +1462,12 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
+# 24 "pic_clock.h"
+typedef unsigned char uint8_t;
+typedef signed char int8_t;
+typedef unsigned int uint16_t;
+typedef signed int int16_t;
+
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -1652,3 +1658,4 @@ Buffer[i] = I2C_Rcv(0);
 Buffer[i] = I2C_Rcv(1);
 I2C_Stop();
 }
+

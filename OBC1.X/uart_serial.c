@@ -1,5 +1,5 @@
 /******************************************************************************************
- * uart_serial.h
+ * uart_serial.c
  * ver1.00
  * Tetsuya Kaku
  *=========================================================================================
@@ -18,6 +18,7 @@
 #include <xc.h>
 #include "uart_serial.h"
 #include "pic_clock.h"
+#include "uint8_to_string.h"
 
 
 /*=====================================================
@@ -70,11 +71,8 @@ void putch(uint8_t byte)
  *     none
  *===================================================*/
 void put_string(uint8_t *str)
-{
-    while(*str != '\0')
-    {
-        putch(*str++);
-    }
+{   
+    while(*str != '\0') putch(*str++);
     putch('\0');
 }
 
@@ -83,19 +81,20 @@ void put_string(uint8_t *str)
  * @brief
  *     1Byte受信
  * @param
- *     void:
+ *     void
  * @return
- *     RCREG:受信データ
+ *     data:受信したデータ
  * @note
  *     none
  *===================================================*/
 uint8_t getch(void)
 {
-    while(!RCIF)
+    int count = 0;
+    while(!RCIF && count <= 100) 
     {
-        ;
+        count++;       // カウントが100まで受信待ち
+        __delay_us(1);
     }
- 
     return RCREG;
 }
 

@@ -6,5 +6,7 @@ plati_temp.h  \
 MCLR_reset.h  \
 system_protocol.h  \
 pic_clock.h  \
+uint8_to_string.h  \
 AD_value.h  \
-spi_master.h 
+spi_master.h  \
+OBC1_app.h 

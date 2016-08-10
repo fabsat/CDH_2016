@@ -3,22 +3,59 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 6 ]
-"43 C:\OBC2.X\spi.c
-[e E1157 . `uc
-SPI_ISR_ENABLE 0
-SPI_ISR_DISABLE 1
+"35 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC1_app.c
+[e E1099 . `uc
+OBC2 2
+COM 3
+POW 4
 ]
-"464 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
-[v _printf printf `(i  1 e 2 0 ]
+"58
+[e E1104 . `uc
+CW_TYPE 1
+DATA_TYPE 2
+]
+[e E1108 . `uc
+DATA_END 16
+DATA_CONTINUE 17
+]
+"97 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\sysytem_protocol.c
+[e E1099 . `uc
+OBC2 2
+COM 3
+POW 4
+]
+"216
+[e E1104 . `uc
+CW_TYPE 1
+DATA_TYPE 2
+]
+[e E1108 . `uc
+DATA_END 16
+DATA_CONTINUE 17
+]
+"81 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\spi_master.c
+[e E1099 . `uc
+OBC2 2
+COM 3
+POW 4
+]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"29 C:\OBC2.X\i2c.c
+"21 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\i2c.c
+[v _I2C_init I2C_init `(v  1 e 0 0 ]
+"29
 [v _I2C_Start I2C_Start `(v  1 e 0 0 ]
 "36
 [v _I2C_Stop I2C_Stop `(v  1 e 0 0 ]
@@ -30,23 +67,95 @@ SPI_ISR_DISABLE 1
 [v _I2C_Rcv I2C_Rcv `(uc  1 e 1 0 ]
 "121
 [v _I2C_GetData I2C_GetData `(v  1 e 0 0 ]
-"51 C:\OBC2.X\OBC2_main.c
+"36 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\MCLR_reset.c
+[v _MCLR_init MCLR_init `(v  1 e 0 0 ]
+"61
+[v _MCLR_reset MCLR_reset `(v  1 e 0 0 ]
+"32 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC1_app.c
+[v _COM_status COM_status `(uc  1 e 1 0 ]
+"44
+[v _POW_status POW_status `(v  1 e 0 0 ]
+"50
+[v _command command `(v  1 e 0 0 ]
+"80
+[v _LED_data_set LED_data_set `(v  1 s 0 LED_data_set ]
+"86
+[v _I2Ctemp_data_set I2Ctemp_data_set `(v  1 s 0 I2Ctemp_data_set ]
+"38 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_app.c
+[v _OBC1_RESET_init OBC1_RESET_init `(v  1 e 0 0 ]
+"83
+[v _interrupt_able interrupt_able `(v  1 e 0 0 ]
+"103
+[v _interrupt_disable interrupt_disable `(v  1 e 0 0 ]
+"151
+[v _trans_I2Ctemp trans_I2Ctemp `(v  1 e 0 0 ]
+"26 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_main.c
 [v _main main `(i  1 e 2 0 ]
-"166 C:\OBC2.X\spi.c
-[v _spi_reset spi_reset `(v  1 s 0 spi_reset ]
-"84 C:\OBC2.X\tempADT.c
+"74
+[v _I2Ctemp I2Ctemp `II(v  1 e 0 0 ]
+"36 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\spi_master.c
+[v _spi_master_start spi_master_start `(v  1 e 0 0 ]
+"80
+[v _spi_master_receive spi_master_receive `(uc  1 e 1 0 ]
+"154
+[v _spi_master_send spi_master_send `(v  1 e 0 0 ]
+"83 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\sysytem_protocol.c
+[v _sysprot_init sysprot_init `(v  1 e 0 0 ]
+"92
+[v _get_cw_data get_cw_data `(v  1 e 0 0 ]
+"139
+[v _sent_data_set sent_data_set `(uc  1 e 1 0 ]
+"178
+[v _cw_data_set cw_data_set `(v  1 e 0 0 ]
+"215
+[v _send_data_master send_data_master `(v  1 e 0 0 ]
+"258
+[v _uint8_data_set uint8_data_set `(v  1 s 0 uint8_data_set ]
+"280
+[v _uint16_data_set uint16_data_set `(v  1 s 0 uint16_data_set ]
+"309
+[v _double_data_set double_data_set `(v  1 s 0 double_data_set ]
+"338
+[v _uint16_to_byte_array uint16_to_byte_array `(v  1 s 0 uint16_to_byte_array ]
+"360
+[v _double_to_byte_array double_to_byte_array `(v  1 s 0 double_to_byte_array ]
+"395
+[v _send_payload send_payload `(uc  1 s 1 send_payload ]
+"430
+[v _receive_payload receive_payload `(v  1 s 0 receive_payload ]
+"463
+[v _packet_send_master packet_send_master `(v  1 s 0 packet_send_master ]
+"490
+[v _packet_receive_master packet_receive_master `(v  1 s 0 packet_receive_master ]
+"84 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\tempADT.c
 [v _ADT_Receive ADT_Receive `(uc  1 e 1 0 ]
 "108
 [v _ADT_Send ADT_Send `(uc  1 e 1 0 ]
-"29 C:\OBC2.X\uart_serial.c
+"34 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\uart_serial.c
 [v _uart_init uart_init `(v  1 e 0 0 ]
-"37
+"53
 [v _putch putch `(v  1 e 0 0 ]
-"44
-[v _put_string put_string `(v  1 e 0 0 ]
-"54
+"90
 [v _getch getch `(uc  1 e 1 0 ]
-[s S424 . 1 `uc 1 RD0 1 0 :1:0 
+"64 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\uint8_to_string.c
+[v _process_100 process_100 `(v  1 s 0 process_100 ]
+"86
+[v _process_10 process_10 `(v  1 s 0 process_10 ]
+"108
+[v _process_1 process_1 `(v  1 s 0 process_1 ]
+[s S696 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"287 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[u S705 . 1 `S696 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES705  1 e 1 @7 ]
+[s S40 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -55,10 +164,10 @@ SPI_ISR_DISABLE 1
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-"348 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[u S433 . 1 `S424 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES433  1 e 1 @8 ]
-[s S253 . 1 `uc 1 RBIF 1 0 :1:0 
+"348
+[u S49 . 1 `S40 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES49  1 e 1 @8 ]
+[s S301 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -68,14 +177,14 @@ SPI_ISR_DISABLE 1
 `uc 1 GIE 1 0 :1:7 
 ]
 "465
-[s S262 . 1 `uc 1 . 1 0 :2:0 
+[s S310 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S267 . 1 `S253 1 . 1 0 `S262 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES267  1 e 1 @11 ]
-[s S211 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S315 . 1 `S301 1 . 1 0 `S310 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES315  1 e 1 @11 ]
+[s S928 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -85,54 +194,43 @@ SPI_ISR_DISABLE 1
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "536
-[u S220 . 1 `S211 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES220  1 e 1 @12 ]
+[u S937 . 1 `S928 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES937  1 e 1 @12 ]
 "787
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
-[s S96 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S581 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "813
-[s S102 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S587 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S107 . 1 `S96 1 . 1 0 `S102 1 . 1 0 ]
-[v _SSPCONbits SSPCONbits `VES107  1 e 1 @20 ]
+[u S592 . 1 `S581 1 . 1 0 `S587 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES592  1 e 1 @20 ]
 "937
 [v _RCSTA RCSTA `VEuc  1 e 1 @24 ]
 "1031
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1037
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
-[s S26 . 1 `uc 1 ADON 1 0 :1:0 
-`uc 1 . 1 0 :1:1 
-`uc 1 GO_nDONE 1 0 :1:2 
-`uc 1 CHS 1 0 :3:3 
-`uc 1 ADCS 1 0 :2:6 
+[s S560 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
 ]
-"1155
-[s S32 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 GO 1 0 :1:2 
-`uc 1 CHS0 1 0 :1:3 
-`uc 1 CHS1 1 0 :1:4 
-`uc 1 CHS2 1 0 :1:5 
-`uc 1 ADCS0 1 0 :1:6 
-`uc 1 ADCS1 1 0 :1:7 
-]
-[s S40 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 nDONE 1 0 :1:2 
-]
-[s S43 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 GO_DONE 1 0 :1:2 
-]
-[u S46 . 1 `S26 1 . 1 0 `S32 1 . 1 0 `S40 1 . 1 0 `S43 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES46  1 e 1 @31 ]
-[s S403 . 1 `uc 1 TRISD0 1 0 :1:0 
+"1415
+[u S569 . 1 `S560 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES569  1 e 1 @135 ]
+[s S19 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -142,9 +240,21 @@ SPI_ISR_DISABLE 1
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "1476
-[u S412 . 1 `S403 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES412  1 e 1 @136 ]
-[s S232 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S28 . 1 `S19 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES28  1 e 1 @136 ]
+[s S217 . 1 `uc 1 TRISE0 1 0 :1:0 
+`uc 1 TRISE1 1 0 :1:1 
+`uc 1 TRISE2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 PSPMODE 1 0 :1:4 
+`uc 1 IBOV 1 0 :1:5 
+`uc 1 OBF 1 0 :1:6 
+`uc 1 IBF 1 0 :1:7 
+]
+"1537
+[u S226 . 1 `S217 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES226  1 e 1 @137 ]
+[s S280 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -154,9 +264,9 @@ SPI_ISR_DISABLE 1
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "1593
-[u S241 . 1 `S232 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES241  1 e 1 @140 ]
-[s S122 . 1 `uc 1 BF 1 0 :1:0 
+[u S289 . 1 `S280 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES289  1 e 1 @140 ]
+[s S607 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -166,101 +276,189 @@ SPI_ISR_DISABLE 1
 `uc 1 SMP 1 0 :1:7 
 ]
 "1836
-[s S131 . 1 `uc 1 . 1 0 :2:0 
+[s S616 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S136 . 1 `uc 1 . 1 0 :2:0 
+[s S621 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S142 . 1 `uc 1 . 1 0 :2:0 
+[s S627 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S147 . 1 `uc 1 . 1 0 :2:0 
+[s S632 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S152 . 1 `uc 1 . 1 0 :2:0 
+[s S637 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S157 . 1 `uc 1 . 1 0 :2:0 
+[s S642 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S162 . 1 `S122 1 . 1 0 `S131 1 . 1 0 `S136 1 . 1 0 `S142 1 . 1 0 `S147 1 . 1 0 `S152 1 . 1 0 `S157 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES162  1 e 1 @148 ]
+[u S647 . 1 `S607 1 . 1 0 `S616 1 . 1 0 `S621 1 . 1 0 `S627 1 . 1 0 `S632 1 . 1 0 `S637 1 . 1 0 `S642 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES647  1 e 1 @148 ]
 "1950
 [v _TXSTA TXSTA `VEuc  1 e 1 @152 ]
 "2030
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
-[s S72 . 1 `uc 1 PCFG 1 0 :4:0 
-`uc 1 . 1 0 :2:4 
-`uc 1 ADCS2 1 0 :1:6 
-`uc 1 ADFM 1 0 :1:7 
-]
-"2194
-[s S77 . 1 `uc 1 PCFG0 1 0 :1:0 
-`uc 1 PCFG1 1 0 :1:1 
-`uc 1 PCFG2 1 0 :1:2 
-`uc 1 PCFG3 1 0 :1:3 
-]
-[u S82 . 1 `S72 1 . 1 0 `S77 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES82  1 e 1 @159 ]
 "2559
 [v _RCIF RCIF `VEb  1 e 0 @101 ]
-"2575
-[v _RD6 RD6 `VEb  1 e 0 @70 ]
-"2609
-[v _SSPEN SSPEN `VEb  1 e 0 @165 ]
-"2613
-[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
-"2685
-[v _TRISA5 TRISA5 `VEb  1 e 0 @1069 ]
-"2709
-[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
-"2711
-[v _TRISC4 TRISC4 `VEb  1 e 0 @1084 ]
-"2713
-[v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"2717
-[v _TRISC7 TRISC7 `VEb  1 e 0 @1087 ]
-"2731
-[v _TRISD6 TRISD6 `VEb  1 e 0 @1094 ]
 "2755
 [v _TXIF TXIF `VEb  1 e 0 @100 ]
-"51 C:\OBC2.X\OBC2_main.c
+[s S146 . 13 `[2]uc 1 power1 2 0 `[2]uc 1 power2 2 2 `[2]uc 1 power3 2 4 `[2]uc 1 power4 2 6 `[2]uc 1 power5 2 8 `[2]uc 1 temp 2 10 `uc 1 obc2 1 12 :1:0 
+`uc 1 powmcu 1 12 :1:1 
+]
+"24 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_main.c
+[v _cw cw `S146  1 e 13 0 ]
+[s S399 . 32 `uc 1 data_type 1 0 `[30]uc 1 payload 30 1 `uc 1 data_end_command 1 31 ]
+"70 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\sysytem_protocol.c
+[v _packet packet `S399  1 s 32 packet ]
+"73
+[v _index_pos index_pos `uc  1 s 1 index_pos ]
+"26 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"117
+"61
 } 0
-"29 C:\OBC2.X\uart_serial.c
+"34 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\uart_serial.c
 [v _uart_init uart_init `(v  1 e 0 0 ]
 {
-"35
+"40
 } 0
-"44
-[v _put_string put_string `(v  1 e 0 0 ]
+"83 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_app.c
+[v _interrupt_able interrupt_able `(v  1 e 0 0 ]
 {
-[v put_string@str str `*.24uc  1 a 1 wreg ]
-[v put_string@str str `*.24uc  1 a 1 wreg ]
-[v put_string@str str `*.24uc  1 a 1 2 ]
-"51
+"90
 } 0
-"37
+"38
+[v _OBC1_RESET_init OBC1_RESET_init `(v  1 e 0 0 ]
+{
+"41
+[v OBC1_RESET_init@nin nin `*.39uc  1 a 2 15 ]
+"49
+} 0
+"21 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\i2c.c
+[v _I2C_init I2C_init `(v  1 e 0 0 ]
+{
+"27
+} 0
+"74 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_main.c
+[v _I2Ctemp I2Ctemp `II(v  1 e 0 0 ]
+{
+"82
+} 0
+"151 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_app.c
+[v _trans_I2Ctemp trans_I2Ctemp `(v  1 e 0 0 ]
+{
+"153
+[v trans_I2Ctemp@data data `[2]uc  1 a 2 9 ]
+"159
+} 0
+"53 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\uart_serial.c
 [v _putch putch `(v  1 e 0 0 ]
 {
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 0 ]
-"42
+"60
+} 0
+"84 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\tempADT.c
+[v _ADT_Receive ADT_Receive `(uc  1 e 1 0 ]
+{
+[v ADT_Receive@reg_adrs reg_adrs `uc  1 a 1 wreg ]
+"86
+[v ADT_Receive@ans ans `uc  1 a 1 5 ]
+"84
+[v ADT_Receive@reg_adrs reg_adrs `uc  1 a 1 wreg ]
+[v ADT_Receive@data data `*.4uc  1 p 1 0 ]
+[v ADT_Receive@kosu kosu `uc  1 p 1 1 ]
+"88
+[v ADT_Receive@reg_adrs reg_adrs `uc  1 a 1 4 ]
+"97
+} 0
+"78 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\i2c.c
+[v _I2C_Send I2C_Send `(v  1 e 0 0 ]
+{
+[v I2C_Send@slave_adr slave_adr `uc  1 a 1 wreg ]
+"80
+[v I2C_Send@adr adr `uc  1 a 1 11 ]
+"78
+[v I2C_Send@slave_adr slave_adr `uc  1 a 1 wreg ]
+[v I2C_Send@data data `uc  1 p 1 7 ]
+"80
+[v I2C_Send@slave_adr slave_adr `uc  1 a 1 10 ]
+"88
+} 0
+"121
+[v _I2C_GetData I2C_GetData `(v  1 e 0 0 ]
+{
+[v I2C_GetData@slave_adr slave_adr `uc  1 a 1 wreg ]
+"123
+[v I2C_GetData@i i `uc  1 a 1 13 ]
+"124
+[v I2C_GetData@adr adr `uc  1 a 1 12 ]
+"121
+[v I2C_GetData@slave_adr slave_adr `uc  1 a 1 wreg ]
+[v I2C_GetData@Buffer Buffer `*.4uc  1 p 1 7 ]
+[v I2C_GetData@CNT CNT `uc  1 p 1 8 ]
+"123
+[v I2C_GetData@slave_adr slave_adr `uc  1 a 1 11 ]
+"137
+} 0
+"36
+[v _I2C_Stop I2C_Stop `(v  1 e 0 0 ]
+{
+"46
+} 0
+"29
+[v _I2C_Start I2C_Start `(v  1 e 0 0 ]
+{
+"33
+} 0
+"91
+[v _I2C_Rcv I2C_Rcv `(uc  1 e 1 0 ]
+{
+[v I2C_Rcv@Ack Ack `uc  1 a 1 wreg ]
+"93
+[v I2C_Rcv@i i `i  1 a 2 4 ]
+"94
+[v I2C_Rcv@BitPos BitPos `uc  1 a 1 6 ]
+[v I2C_Rcv@data data `uc  1 a 1 3 ]
+"91
+[v I2C_Rcv@Ack Ack `uc  1 a 1 wreg ]
+"96
+[v I2C_Rcv@Ack Ack `uc  1 a 1 2 ]
+"118
+} 0
+"49
+[v _I2C_Out I2C_Out `(uc  1 e 1 0 ]
+{
+[v I2C_Out@data data `uc  1 a 1 wreg ]
+"51
+[v I2C_Out@i i `i  1 a 2 4 ]
+"52
+[v I2C_Out@BitPos BitPos `uc  1 a 1 6 ]
+[v I2C_Out@ACK ACK `uc  1 a 1 2 ]
+"49
+[v I2C_Out@data data `uc  1 a 1 wreg ]
+"54
+[v I2C_Out@data data `uc  1 a 1 3 ]
+"75
+} 0
+"103 C:\Users\Tetsuya\Documents\GitHub\CDH\OBC2.X\OBC2_app.c
+[v _interrupt_disable interrupt_disable `(v  1 e 0 0 ]
+{
+"109
 } 0

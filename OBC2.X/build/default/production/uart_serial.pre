@@ -1434,54 +1434,59 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 39 "uart_serial.h"
-void uart_init();
-void putch(unsigned char byte);
-void put_string(unsigned char *str);
-unsigned char getch();
-unsigned char getche();
+# 24 "pic_clock.h"
+typedef unsigned char uint8_t;
+typedef signed char int8_t;
+typedef unsigned int uint16_t;
+typedef signed int int16_t;
 
-# 29 "uart_serial.c"
-void uart_init()
+# 23 "uint8_to_string.h"
+void uint8_to_string(uint8_t num, uint8_t *p_str_buf, uint8_t buf_size);
+
+# 65 "uart_serial.h"
+void uart_init(void);
+
+# 78
+void putch(uint8_t byte);
+
+# 92
+void put_string(uint8_t *str);
+
+# 107
+uint8_t getch(void);
+
+# 34 "uart_serial.c"
+void uart_init(void)
 {
-TRISC7 = 1;
-SPBRG = ((unsigned char)(((20000000 / 16) / 9600) - 1));
+TRISCbits.TRISC7 = 1;
+SPBRG = ((unsigned char)(((20000000 / 16) / (9600)) - 1));
 TXSTA = (0x00 | 0x04 | 0x20);
 RCSTA = (0x00 | 0x90);
 }
 
-void putch(unsigned char byte)
+# 53
+void putch(uint8_t byte)
 {
-while(!TXIF){
+while(!TXIF)
+{
+;
 }
 TXREG = byte;
 }
 
-void put_string(unsigned char *str)
+# 73
+void put_string(uint8_t *str)
 {
-while(*str != '\0')
-{
-putch(*str++);
-}
+while(*str != '\0') putch(*str++);
 putch('\0');
 }
 
-
-unsigned char getch()
+# 90
+uint8_t getch(void)
 {
-while(!RCIF){
-}
+int count = 0;
+while(!RCIF && count <= 100) count++;
 
 return RCREG;
-}
-
-unsigned char getche()
-{
-unsigned char c;
-
-c = getch();
-putch(c);
-
-return c;
 }
 

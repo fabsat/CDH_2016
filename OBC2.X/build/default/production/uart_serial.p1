@@ -1,6 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"2717 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[v _TRISC7 `Vb ~T0 @X0 0 e@1087 ]
+"1404 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S59 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1403
+[u S58 `S59 1 ]
+[n S58 . . ]
+"1415
+[v _TRISCbits `VS58 ~T0 @X0 0 e@135 ]
 "2030
 [v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
 "1950
@@ -1032,150 +1038,123 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
-[; ;uart_serial.h: 39: void uart_init();
-[; ;uart_serial.h: 40: void putch(unsigned char byte);
-[; ;uart_serial.h: 41: void put_string(unsigned char *str);
-[; ;uart_serial.h: 42: unsigned char getch();
-[; ;uart_serial.h: 43: unsigned char getche();
-"29 uart_serial.c
+[; ;pic_clock.h: 24: typedef unsigned char uint8_t;
+[; ;pic_clock.h: 25: typedef signed char int8_t;
+[; ;pic_clock.h: 26: typedef unsigned int uint16_t;
+[; ;pic_clock.h: 27: typedef signed int int16_t;
+[; ;uint8_to_string.h: 23: void uint8_to_string(uint8_t num, uint8_t *p_str_buf, uint8_t buf_size);
+[; ;uart_serial.h: 65: void uart_init(void);
+[; ;uart_serial.h: 78: void putch(uint8_t byte);
+[; ;uart_serial.h: 92: void put_string(uint8_t *str);
+[; ;uart_serial.h: 107: uint8_t getch(void);
+"34 uart_serial.c
 [v _uart_init `(v ~T0 @X0 1 ef ]
-"30
+"35
 {
-[; ;uart_serial.c: 29: void uart_init()
-[; ;uart_serial.c: 30: {
+[; ;uart_serial.c: 34: void uart_init(void)
+[; ;uart_serial.c: 35: {
 [e :U _uart_init ]
 [f ]
-[; ;uart_serial.c: 31: TRISC7 = 1;
-"31
-[e = _TRISC7 -> -> 1 `i `b ]
-[; ;uart_serial.c: 32: SPBRG = ((unsigned char)(((20000000 / 16) / 9600) - 1));
-"32
+[; ;uart_serial.c: 36: TRISCbits.TRISC7 = 1;
+"36
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+[; ;uart_serial.c: 37: SPBRG = ((unsigned char)(((20000000 / 16) / (9600)) - 1));
+"37
 [e = _SPBRG -> - / / -> 20000000 `l -> -> 16 `i `l -> -> 9600 `i `l -> -> 1 `i `l `uc ]
-[; ;uart_serial.c: 33: TXSTA = (0x00 | 0x04 | 0x20);
-"33
+[; ;uart_serial.c: 38: TXSTA = (0x00 | 0x04 | 0x20);
+"38
 [e = _TXSTA -> | | -> 0 `i -> 4 `i -> 32 `i `uc ]
-[; ;uart_serial.c: 34: RCSTA = (0x00 | 0x90);
-"34
+[; ;uart_serial.c: 39: RCSTA = (0x00 | 0x90);
+"39
 [e = _RCSTA -> | -> 0 `i -> 144 `i `uc ]
-[; ;uart_serial.c: 35: }
-"35
+[; ;uart_serial.c: 40: }
+"40
 [e :UE 96 ]
 }
-"37
+"53
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
-"38
+"54
 {
-[; ;uart_serial.c: 37: void putch(unsigned char byte)
-[; ;uart_serial.c: 38: {
+[; ;uart_serial.c: 53: void putch(uint8_t byte)
+[; ;uart_serial.c: 54: {
 [e :U _putch ]
-"37
+"53
 [v _byte `uc ~T0 @X0 1 r1 ]
-"38
+"54
 [f ]
-[; ;uart_serial.c: 39: while(!TXIF){
-"39
+[; ;uart_serial.c: 55: while(!TXIF)
+"55
 [e $U 98  ]
 [e :U 99 ]
+[; ;uart_serial.c: 56: {
+"56
 {
-"40
+[; ;uart_serial.c: 57: ;
+"58
 }
 [e :U 98 ]
-"39
+"55
 [e $ ! _TXIF 99  ]
 [e :U 100 ]
-[; ;uart_serial.c: 40: }
-[; ;uart_serial.c: 41: TXREG = byte;
-"41
-[e = _TXREG _byte ]
-[; ;uart_serial.c: 42: }
-"42
-[e :UE 97 ]
-}
-"44
-[v _put_string `(v ~T0 @X0 1 ef1`*uc ]
-"45
-{
-[; ;uart_serial.c: 44: void put_string(unsigned char *str)
-[; ;uart_serial.c: 45: {
-[e :U _put_string ]
-"44
-[v _str `*uc ~T0 @X0 1 r1 ]
-"45
-[f ]
-[; ;uart_serial.c: 46: while(*str != '\0')
-"46
-[e $U 102  ]
-[e :U 103 ]
-[; ;uart_serial.c: 47: {
-"47
-{
-[; ;uart_serial.c: 48: putch(*str++);
-"48
-[e ( _putch (1 *U ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-"49
-}
-[e :U 102 ]
-"46
-[e $ != -> *U _str `ui -> 0 `ui 103  ]
-[e :U 104 ]
-[; ;uart_serial.c: 49: }
-[; ;uart_serial.c: 50: putch('\0');
-"50
-[e ( _putch (1 -> -> 0 `ui `uc ]
-[; ;uart_serial.c: 51: }
-"51
-[e :UE 101 ]
-}
-"54
-[v _getch `(uc ~T0 @X0 1 ef ]
-"55
-{
-[; ;uart_serial.c: 54: unsigned char getch()
-[; ;uart_serial.c: 55: {
-[e :U _getch ]
-[f ]
-[; ;uart_serial.c: 56: while(!RCIF){
-"56
-[e $U 106  ]
-[e :U 107 ]
-{
-"57
-}
-[e :U 106 ]
-"56
-[e $ ! _RCIF 107  ]
-[e :U 108 ]
-[; ;uart_serial.c: 57: }
-[; ;uart_serial.c: 59: return RCREG;
+[; ;uart_serial.c: 58: }
+[; ;uart_serial.c: 59: TXREG = byte;
 "59
-[e ) _RCREG ]
-[e $UE 105  ]
+[e = _TXREG _byte ]
 [; ;uart_serial.c: 60: }
 "60
-[e :UE 105 ]
+[e :UE 97 ]
 }
-"62
-[v _getche `(uc ~T0 @X0 1 ef ]
-"63
+"73
+[v _put_string `(v ~T0 @X0 1 ef1`*uc ]
+"74
 {
-[; ;uart_serial.c: 62: unsigned char getche()
-[; ;uart_serial.c: 63: {
-[e :U _getche ]
+[; ;uart_serial.c: 73: void put_string(uint8_t *str)
+[; ;uart_serial.c: 74: {
+[e :U _put_string ]
+"73
+[v _str `*uc ~T0 @X0 1 r1 ]
+"74
 [f ]
-"64
-[v _c `uc ~T0 @X0 1 a ]
-[; ;uart_serial.c: 64: unsigned char c;
-[; ;uart_serial.c: 66: c = getch();
-"66
-[e = _c ( _getch ..  ]
-[; ;uart_serial.c: 67: putch(c);
-"67
-[e ( _putch (1 _c ]
-[; ;uart_serial.c: 69: return c;
-"69
-[e ) _c ]
-[e $UE 109  ]
-[; ;uart_serial.c: 70: }
-"70
-[e :UE 109 ]
+[; ;uart_serial.c: 75: while(*str != '\0') putch(*str++);
+"75
+[e $U 102  ]
+[e :U 103 ]
+[e ( _putch (1 *U ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+[e :U 102 ]
+[e $ != -> *U _str `ui -> 0 `ui 103  ]
+[e :U 104 ]
+[; ;uart_serial.c: 76: putch('\0');
+"76
+[e ( _putch (1 -> -> 0 `ui `uc ]
+[; ;uart_serial.c: 77: }
+"77
+[e :UE 101 ]
+}
+"90
+[v _getch `(uc ~T0 @X0 1 ef ]
+"91
+{
+[; ;uart_serial.c: 90: uint8_t getch(void)
+[; ;uart_serial.c: 91: {
+[e :U _getch ]
+[f ]
+"92
+[v _count `i ~T0 @X0 1 a ]
+[; ;uart_serial.c: 92: int count = 0;
+[e = _count -> 0 `i ]
+[; ;uart_serial.c: 93: while(!RCIF && count <= 100) count++;
+"93
+[e $U 106  ]
+[e :U 107 ]
+[e ++ _count -> 1 `i ]
+[e :U 106 ]
+[e $ && ! _RCIF <= _count -> 100 `i 107  ]
+[e :U 108 ]
+[; ;uart_serial.c: 95: return RCREG;
+"95
+[e ) _RCREG ]
+[e $UE 105  ]
+[; ;uart_serial.c: 96: }
+"96
+[e :UE 105 ]
 }

@@ -63,7 +63,7 @@ void MCLR_reset(uint8_t resetted_mcu)
     nin = PORTE_REG_ADR;
 
     /* リセット実行 */
-    *nin = resetted_mcu;   // 指定したMCU(RE2~0ピンのいずれかをLOWに))
+    *nin = resetted_mcu;      // 指定したMCU(RE2~0ピンのいずれかをLOWに))
     __delay_ms(10);
-    *nin = PORTE_POEWR_ON; // 全てHIGHにして再起動
+    *nin = PORTE_POEWR_ON;              // 全てHIGHにして再起動
 }

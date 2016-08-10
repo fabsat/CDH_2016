@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>OBC2</name>
-            <creation-uuid>eb21bc9b-3fd1-4312-9929-9122352b7920</creation-uuid>
+            <name>OBC2_ver2</name>
+            <creation-uuid>bfd71102-337c-4c2c-8d00-4257c51f3326</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

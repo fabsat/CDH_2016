@@ -19,6 +19,7 @@
 #define __UART_SERIAL_H__
 
 #include "pic_clock.h"
+#include "uint8_to_string.h"
 
 
 /******************************************************************************************
@@ -91,17 +92,18 @@ void putch(uint8_t byte);
 void put_string(uint8_t *str);
 
 
+
 /*=====================================================
  * @brief
  *     1Byte受信
  * @param
- *     void:
+ *     data:受信したデータ
  * @return
- *     RCREG:受信データ
+ *     0xFF:受信失敗
+ *     0x00:受信成功
  * @note
  *     none
  *===================================================*/
 uint8_t getch(void);
-
 
 #endif  // __UART_SERIAL_H__

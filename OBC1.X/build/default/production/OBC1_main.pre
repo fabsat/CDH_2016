@@ -1,17 +1,17 @@
 
 # 1 "OBC1_main.c"
 
-# 26 "/Applications/microchip/xc8/v1.35/include/htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "/Applications/microchip/xc8/v1.35/include/xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "/Applications/microchip/xc8/v1.35/include/pic16f877a.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -1411,21 +1411,21 @@ extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
 
 
-# 27 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
 # 76
 extern unsigned int flash_read(unsigned short addr);
 
-# 41 "/Applications/microchip/xc8/v1.35/include/eeprom_routines.h"
+# 41 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 149 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 149 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
@@ -1434,10 +1434,10 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 4 "/Applications/microchip/xc8/v1.35/include/__size_t.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "/Applications/microchip/xc8/v1.35/include/stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -1446,17 +1446,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "/Applications/microchip/xc8/v1.35/include/stdio.h"
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 25 "/Applications/microchip/xc8/v1.35/include/errno.h"
+# 25 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\errno.h"
 extern int errno;
 
-# 12 "/Applications/microchip/xc8/v1.35/include/conio.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -1470,7 +1470,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "/Applications/microchip/xc8/v1.35/include/stdio.h"
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -1503,16 +1503,25 @@ typedef signed char int8_t;
 typedef unsigned int uint16_t;
 typedef signed int int16_t;
 
-# 64 "uart_serial.h"
+# 41 "MCLR_reset.h"
+void MCLR_init(void);
+
+# 55
+void MCLR_reset(uint8_t resetted_mcu);
+
+# 23 "uint8_to_string.h"
+void uint8_to_string(uint8_t num, uint8_t *p_str_buf, uint8_t buf_size);
+
+# 65 "uart_serial.h"
 void uart_init(void);
 
-# 77
+# 78
 void putch(uint8_t byte);
 
-# 91
+# 92
 void put_string(uint8_t *str);
 
-# 104
+# 107
 uint8_t getch(void);
 
 # 35 "AD_value.h"
@@ -1537,17 +1546,16 @@ typedef enum
 {
 CW_TYPE = 0x01,
 DATA_TYPE,
-COMMAND_TYPE,
 } data_type_t;
 
-# 40
+# 39
 typedef enum
 {
 DATA_END = 0b00010000,
 DATA_CONTINUE,
 } data_end_command_t;
 
-# 52
+# 51
 typedef struct
 {
 uint8_t power1[2];
@@ -1562,106 +1570,139 @@ uint8_t powmcu:1;
 
 extern cw_t cw;
 
-# 105
+# 101
 void sysprot_init(void);
 
 void cw_set(void);
 
-# 133
+# 129
 uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
 
-# 146
+# 142
 void cw_data_set(cw_t *p_cw_data);
 
-# 161
+# 157
 void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
 
+# 170
+void receive_data_master(destination_t destination);
 
-void show_packet(void);
-
-# 51 "spi_master.h"
+# 49 "spi_master.h"
 void spi_master_start(void);
 
-# 64
+# 62
 uint8_t spi_master_receive(destination_t destination);
 
-# 79
+# 77
+void spi_master_send_int(destination_t destination, uint8_t data);
+
+# 90
 void spi_master_send(destination_t destination, uint8_t data);
 
-# 92
+# 103
 void spi_master_stop(void);
 
-# 41 "MCLR_reset.h"
-void MCLR_init(void);
-
-# 55
-void MCLR_reset(uint8_t resetted_mcu);
+# 18 "OBC1_app.h"
+extern int uart_interrupt;
+extern uint8_t I2CTEMP_data[2];
 
 
-# 20 "OBC1_main.c"
+uint8_t COM_status(void);
+void POW_status(void);
+void command(uint8_t data);
+
+
+# 21 "OBC1_main.c"
 #pragma config FOSC = HS, WDTE = OFF, PWRTE = ON, BOREN = ON, LVP = OFF
 #pragma config CPD = OFF, WRT = OFF, CP = OFF
 
-# 28
 cw_t cw = { {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, 0, 0 };
+
+
+void interrupt get_uart(void);
+void check_bit(uint8_t data);
 
 
 int main(void){
 
-TRISD7 = 0;
+TRISDbits.TRISD7 = 0;
 PORTDbits.RD7 = 0;
+TRISDbits.TRISD6 = 0;
+PORTDbits.RD6 = 0;
 
+TRISDbits.TRISD2 = 0;
 
+PORTDbits.RD2 = 1;
+
+MCLR_init();
 sysprot_init();
+ad_con_init();
+spi_master_start();
 uart_init();
+uart_interrupt = 0;
 
-# 48
-put_string("Program Start!\r\n");
-
-const double data0 = 1.0;
-const double data4 = 1.0;
-const uint8_t data1 = 0x01;
-const double data5 = 1.0;
-const uint16_t data2 = 0x02;
-const double data3 = 1.0;
-
-sent_data_set(&data0, 1, 4);
-sent_data_set(&data4, 1, 4);
-
-sent_data_set(&data2, 1, 2);
-sent_data_set(&data5, 1, 4);
-sent_data_set(&data1, 1, 1);
-sent_data_set(&data3, 1, 4);
-
-show_packet();
-
-
-while(1){
-RD7 = 1;
-
-_delay((unsigned long)((1000)*(20000000/4000.0)));
-
-RD7 = 0;
-_delay((unsigned long)((1000)*(20000000/4000.0)));
-}
 
 while(1)
 {
 PORTDbits.RD7 = 1;
-_delay((unsigned long)((1000)*(20000000/4000.0)));
-get_cw_data();
-cw_data_set(&cw);
-send_data_master(COM, 0x01, DATA_END);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+spi_master_send_int(COM, 0x12);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+spi_master_send_int(COM, 0x34);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+spi_master_send(COM, 0x55);
+
+# 114
 PORTDbits.RD7 = 0;
-_delay((unsigned long)((1000)*(20000000/4000.0)));
-
-
-if(PORTDbits.RD0==0)
-
-_delay((unsigned long)((10000)*(20000000/4000.0)));
+_delay((unsigned long)((100)*(20000000/4000.0)));
 }
-
 
 return 0;
 }
 
+void interrupt get_uart(void)
+{
+if(PIR1bits.RCIF == 1)
+{
+PORTDbits.RD6 = 1;
+_delay((unsigned long)((500)*(20000000/4000.0)));
+PIR1bits.RCIF = 0;
+I2CTEMP_data[uart_interrupt] = getch();
+spi_master_send(COM, I2CTEMP_data[uart_interrupt]);
+uart_interrupt++;
+PORTDbits.RD6 = 0;
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+}
+}
+
+
+void check_bit(uint8_t data)
+{
+const uint8_t bit_mask = 0b10000000;
+uint8_t check_bit;
+uint8_t i;
+
+for(i = 0; i < 8; i++)
+{
+check_bit = bit_mask & data;
+
+PORTDbits.RD7 = 1;
+_delay((unsigned long)((100)*(20000000/4000.0)));
+PORTDbits.RD7 = 0;
+_delay((unsigned long)((100)*(20000000/4000.0)));
+
+if(check_bit)
+{
+PORTDbits.RD6 = 1;
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+PORTDbits.RD6 = 0;
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+}
+else
+{
+_delay((unsigned long)((2000)*(20000000/4000.0)));
+}
+data <<= 1;
+}
+
+}

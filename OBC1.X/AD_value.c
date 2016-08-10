@@ -47,7 +47,8 @@ static void bit_shift(uint16_t *p_ad_value, adres_t *p_adres);
  *     ADコンバータするピンを要確認
  *===================================================*/
 void ad_con_init(void)
-{   
+{
+    
     PORTAbits.RA0 = 0;
     PORTAbits.RA3 = 0;
     TRISAbits.TRISA0 = 1;   //RA0を入力ピンにしてVref＋読み取りピン

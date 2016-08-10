@@ -40,6 +40,6 @@ unsigned char ADT_Begin(void);
 unsigned char ADT_ActionMode(unsigned char mode);
 unsigned char ADT_Receive(char reg_adrs, unsigned char *data, unsigned char kosu);
 unsigned char ADT_Send(char reg_adrs, unsigned char *data, unsigned char kosu);
-long ADT_Read(double *temp);
+void ADT_Read(uint8_t *temp);
 
 #endif

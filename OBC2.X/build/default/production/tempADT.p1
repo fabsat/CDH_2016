@@ -1056,6 +1056,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 53: extern double fmod(double, double);
 [; ;math.h: 54: extern double trunc(double);
 [; ;math.h: 55: extern double round(double);
+[; ;pic_clock.h: 24: typedef unsigned char uint8_t;
+[; ;pic_clock.h: 25: typedef signed char int8_t;
+[; ;pic_clock.h: 26: typedef unsigned int uint16_t;
+[; ;pic_clock.h: 27: typedef signed int int16_t;
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -1097,7 +1101,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tempADT.h: 40: unsigned char ADT_ActionMode(unsigned char mode);
 [; ;tempADT.h: 41: unsigned char ADT_Receive(char reg_adrs, unsigned char *data, unsigned char kosu);
 [; ;tempADT.h: 42: unsigned char ADT_Send(char reg_adrs, unsigned char *data, unsigned char kosu);
-[; ;tempADT.h: 43: long ADT_Read(double *temp);
+[; ;tempADT.h: 43: void ADT_Read(uint8_t *temp);
 "39 tempADT.c
 [v _ADT_Begin `(uc ~T0 @X0 1 ef ]
 {
@@ -1139,8 +1143,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ans `uc ~T0 @X0 1 a ]
 [; ;tempADT.c: 60: unsigned char ans = 0;
 [e = _ans -> -> 0 `i `uc ]
-[v F1254 `uc ~T0 @X0 -> 2 `i s ]
-[i F1254
+[v F1258 `uc ~T0 @X0 -> 2 `i s ]
+[i F1258
 :U ..
 "61
 -> -> 0 `i `uc
@@ -1148,7 +1152,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _data `uc ~T0 @X0 -> 2 `i a ]
 [; ;tempADT.c: 61: unsigned char data[2] = {0};
-[e = _data F1254 ]
+[e = _data F1258 ]
 [; ;tempADT.c: 64: ans = ADT_Receive(0x03, &data[0], 1);
 "64
 [e = _ans ( _ADT_Receive (3 , , -> -> 3 `i `uc &U *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 1 `i `uc ]
@@ -1278,11 +1282,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 103 ]
 }
 "134
-[v _ADT_Read `(l ~T0 @X0 1 ef1`*d ]
+[v _ADT_Read `(v ~T0 @X0 1 ef1`*uc ]
 {
-[; ;tempADT.c: 134: long ADT_Read(double *temp){
+[; ;tempADT.c: 134: void ADT_Read(uint8_t *temp){
 [e :U _ADT_Read ]
-[v _temp `*d ~T0 @X0 1 r1 ]
+[v _temp `*uc ~T0 @X0 1 r1 ]
 [f ]
 "136
 [v _t `l ~T0 @X0 1 a ]
@@ -1300,18 +1304,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "142
 [e $ ! == -> _ans `i -> 0 `i 109  ]
 {
-[; ;tempADT.c: 143: t = (data[0] << 8) | data[1];
-"143
-[e = _t -> | << -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 8 `i -> *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux `i `l ]
+[; ;tempADT.c: 146: *temp = data[0];
 "146
+[e = *U _temp *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux ]
+"147
 }
 [e :U 109 ]
-[; ;tempADT.c: 146: }
-[; ;tempADT.c: 150: return t;
+[; ;tempADT.c: 147: }
+[; ;tempADT.c: 150: }
 "150
-[e ) _t ]
-[e $UE 108  ]
-[; ;tempADT.c: 151: }
-"151
 [e :UE 108 ]
 }

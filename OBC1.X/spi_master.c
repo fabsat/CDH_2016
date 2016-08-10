@@ -41,7 +41,6 @@ void spi_master_start(void)
     TRISCbits.TRISC4 = 1;    // RC4 is SDI -> INPUT
     
     /* SS pin configure OUTPUT */
-    SS_OBC2_TRIS = 0;      // RC1 is SS  -> OUTPUT
     SS_COM_TRIS  = 0;
     SS_POW_TRIS  = 0;
 
@@ -60,7 +59,6 @@ void spi_master_start(void)
     SSPCONbits.SSPM0 = 0;
 
     /* SS_PIN set HIGH */
-    SS_OBC2 = 1;
     SS_COM  = 1;
     SS_POW  = 1;
    
@@ -90,10 +88,7 @@ uint8_t spi_master_receive(destination_t destination)
     /* 各サブシステムからの準備完了通知を待つ */
     switch(destination)
     {
-	case OBC2:
-            while(OBC2_READY == 0){;} // OBC2_READYピンがセットされるまで待つ
-            break;
-        case COM:
+	    case COM:
             while(COM_READY == 0){;}  // COM_READYピンがセットされるまで待つ
             break;
         case POW:
@@ -104,9 +99,6 @@ uint8_t spi_master_receive(destination_t destination)
     /* Slave Select -> Low */
     switch(destination)
     {
-        case OBC2:
-            SS_OBC2 = 0;
-            break;
         case COM:
             SS_COM  = 0;
             break;
@@ -136,9 +128,6 @@ uint8_t spi_master_receive(destination_t destination)
     /* Slave Select -> High */
     switch(destination)
     {
-        case OBC2:
-            SS_OBC2 = 1;
-            break;
         case COM:
             SS_COM  = 1;
             break;
@@ -148,6 +137,84 @@ uint8_t spi_master_receive(destination_t destination)
     }
 
     return SSPBUF;
+}
+
+
+/*=====================================================
+ * @brief
+ *     SPI Masterデータ送信関数(1Byte)
+ * @param
+ *     destination:通信の相手先を選択
+ *     data     :送信データ
+ * @return
+ *     void:
+ * @note
+ *     1[ms]で送信完了しなければTIMEOUTとなる
+ *===================================================*/
+void spi_master_send_int(destination_t destination, uint8_t data)
+{
+    uint8_t dummy;
+    uint16_t timeout_counter = 1000;
+
+    /* dummy変数にデータをリードする */
+    dummy = SSPBUF;
+
+    
+    /* Slave Select -> Low */
+    switch(destination)
+    {
+        case COM:
+            SS_COM  = 0;
+            break;
+        case POW:
+            SS_POW  = 0;
+            break;
+    }
+    
+
+    /* 送信データをSSPBUFにセット SPI通信スタート */
+    SSPBUF = data;
+
+    /* 各サブシステムからの準備完了通知を待つ */
+    /*
+    switch(destination)
+    {
+	    case COM:
+            while(COM_READY == 0){;}  // COM_READYピンがセットされるまで待つ
+            break;
+        case POW:
+            while(POW_READY == 0){;}  // POW_READYピンがリセットされるまで待つ
+            break;
+    }
+    */
+    
+    /* 送信完了待ち */
+    while(SSPSTATbits.BF == 0)
+    {
+        /* TIMEOUT (1[ms]を超えた時) */
+        if(timeout_counter == 0)
+        {
+            return;
+        }
+
+        /* 1[us]ごとにtimeout_counterをデクリメントする */
+        __delay_us(1);
+        timeout_counter--;
+    }
+
+    /* Slave Select -> High */
+    switch(destination)
+    {
+        case COM:
+            SS_COM  = 1;
+            break;
+        case POW:
+            SS_POW  = 1;
+            break;
+    }
+    
+    /* slaveから来たダミーデータを読み込んでおく */
+    dummy = SSPBUF;
 }
 
 
@@ -173,10 +240,7 @@ void spi_master_send(destination_t destination, uint8_t data)
     /* 各サブシステムからの準備完了通知を待つ */
     switch(destination)
     {
-		case OBC2:
-            while(OBC2_READY == 0){;} // OBC2_READYピンがセットされるまで待つ
-            break;
-        case COM:
+	    case COM:
             while(COM_READY == 0){;}  // COM_READYピンがセットされるまで待つ
             break;
         case POW:
@@ -187,9 +251,6 @@ void spi_master_send(destination_t destination, uint8_t data)
     /* Slave Select -> Low */
     switch(destination)
     {
-        case OBC2:
-            SS_OBC2 = 0;
-            break;
         case COM:
             SS_COM  = 0;
             break;
@@ -197,30 +258,37 @@ void spi_master_send(destination_t destination, uint8_t data)
             SS_POW  = 0;
             break;
     }
+    
 
     /* 送信データをSSPBUFにセット SPI通信スタート */
     SSPBUF = data;
 
+    
+    
     /* 送信完了待ち */
     while(SSPSTATbits.BF == 0)
     {
-        /* TIMEOUT (1[ms]を超えた時) */
+        PIE1bits.TMR1IE   = 1;  // Timer 1 overflow interupt enabled
+        T1CONbits.TMR1ON  = 1;  // Timer 1 on
+        
+        /* TIMEOUT (300[ms]を超えた時) */
         if(timeout_counter == 0)
         {
             return;
         }
 
         /* 1[us]ごとにtimeout_counterをデクリメントする */
-        __delay_us(1);
+        __delay_us(300);
         timeout_counter--;
     }
+    PIR1bits.TMR1IF   = 0;  // Reset interupt flag
+    PIE1bits.TMR1IE   = 0;  // Timer 1 overflow interupt enabled
+    T1CONbits.TMR1ON  = 0;  // Timer 1 on
+    
 
     /* Slave Select -> High */
     switch(destination)
     {
-        case OBC2:
-            SS_OBC2 = 1;
-            break;
         case COM:
             SS_COM  = 1;
             break;
@@ -232,7 +300,6 @@ void spi_master_send(destination_t destination, uint8_t data)
     /* slaveから来たダミーデータを読み込んでおく */
     dummy = SSPBUF;
 }
-
 
 /*=====================================================
  * @brief
@@ -247,10 +314,10 @@ void spi_master_send(destination_t destination, uint8_t data)
 void spi_master_stop(void)
 {
     /* SS pin -> LOW */
-    SS_OBC2 = 0;
     SS_COM  = 0;
     SS_POW  = 0;
 
     /* SPI(MSSP)無効化 */
     SSPCONbits.SSPEN = 0;
 }
+

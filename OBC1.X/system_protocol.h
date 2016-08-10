@@ -14,7 +14,7 @@ typedef enum
     POW,
 } destination_t;
 
-#define USE_MCU 0x01        // 使用しているマイコンがOBC1=0x01, OBC2=0x02, COM=0x03, POW=0x04
+#define USE_MCU 0x11        // 使用しているマイコンがOBC1=0x01, OBC2=0x02, COM=0x03, POW=0x04
 
 /********************************************************************************
  *                          パケット関連の各種定義                                *
@@ -24,7 +24,6 @@ typedef enum
 {
     CW_TYPE = 0x01,
     DATA_TYPE,
-    COMMAND_TYPE,
 } data_type_t;
 
 #define COMMAND 0x03
@@ -34,7 +33,7 @@ typedef enum
 /* コマンド一覧 */
 #define LED_BLINK     (0x01)
 #define GET_I2C_TEMP  (0x02)
-
+#define GET_CW_DATA   (0x03)
 
 /* データ終了コマンド一覧 */
 typedef enum
@@ -79,13 +78,10 @@ extern cw_t cw;
 
 /* Peripheral MCU Notification Pin and I/O Setting Register */
 #define PORTD_REG_ADR         0x08
-#define OBC2_READY            PORTDbits.RD2  // ここを消したのは何か意図ある？
-#define COM_READY             PORTDbits.RD0
-#define POW_READY             PORTDbits.RD1
-#define OBC2_READY_PIN_TRIS   TRISDbits.TRISD2 // OBC2の設定が消えてたね！
 #define COM_READY_PIN_TRIS    TRISDbits.TRISD0
 #define POW_READY_PIN_TRIS    TRISDbits.TRISD1
-
+#define COM_READY             PORTDbits.RD0
+#define POW_READY             PORTDbits.RD1
 
 
 /********************************************************************************
@@ -161,6 +157,17 @@ void cw_data_set(cw_t *p_cw_data);
 void send_data_master(destination_t destination,  data_type_t data_type, data_end_command_t data_end_command);
 
 
-void show_packet(void);
+/*=====================================================
+ * @brief
+ *     指定したサブシステムからデータを受信する(Master用)
+ * @param
+ *     destination     :送信の相手先
+ * @return
+ *     void:
+ * @note
+ *     この関数実行後にsetしたデータ内容は初期化される
+ *===================================================*/
+void receive_data_master(destination_t destination);
+
 #endif	/* _DATA_SEND_RECEIVE_PROTOCOL_H */
 

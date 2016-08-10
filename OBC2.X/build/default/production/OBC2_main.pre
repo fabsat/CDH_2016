@@ -1497,28 +1497,26 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 39 "uart_serial.h"
-void uart_init();
-void putch(unsigned char byte);
-void put_string(unsigned char *str);
-unsigned char getch();
-unsigned char getche();
+# 24 "pic_clock.h"
+typedef unsigned char uint8_t;
+typedef signed char int8_t;
+typedef unsigned int uint16_t;
+typedef signed int int16_t;
 
-# 27 "spi.h"
-typedef enum
-{
-SPI_ISR_ENABLE,
-SPI_ISR_DISABLE,
-} spi_isr_set_t;
+# 23 "uint8_to_string.h"
+void uint8_to_string(uint8_t num, uint8_t *p_str_buf, uint8_t buf_size);
 
-# 49
-void spi_slave_init(spi_isr_set_t spi_isr);
+# 65 "uart_serial.h"
+void uart_init(void);
 
-# 66
-char spi_send_receive(char data);
+# 78
+void putch(uint8_t byte);
 
-# 79
-void spi_interrupt(void);
+# 92
+void put_string(uint8_t *str);
+
+# 107
+uint8_t getch(void);
 
 # 27 "i2c.h"
 void I2C_init(void);
@@ -1562,61 +1560,143 @@ unsigned char ADT_Begin(void);
 unsigned char ADT_ActionMode(unsigned char mode);
 unsigned char ADT_Receive(char reg_adrs, unsigned char *data, unsigned char kosu);
 unsigned char ADT_Send(char reg_adrs, unsigned char *data, unsigned char kosu);
-long ADT_Read(double *temp);
+void ADT_Read(uint8_t *temp);
+
+# 16 "OBC1_app.h"
+uint8_t COM_status(void);
+void POW_status(void);
+void command(uint8_t data);
+
+# 33 "OBC2_app.h"
+void OBC1_RESET_init(void);
+
+# 46
+void OBC1_reset(void);
+
+# 59
+void OBC1(void);
+
+# 71
+void interrupt I2Ctemp(void);
+
+# 85
+void interrupt_able(void);
+
+# 98
+void interrupt_disable(void);
+
+# 110
+void trans_I2Ctemp(void);
+
+# 10 "system_protocol.h"
+typedef enum
+{
+OBC2 = 0x02,
+COM,
+POW,
+} destination_t;
+
+# 23
+typedef enum
+{
+CW_TYPE = 0x01,
+DATA_TYPE,
+} data_type_t;
+
+# 39
+typedef enum
+{
+DATA_END = 0b00010000,
+DATA_CONTINUE,
+} data_end_command_t;
+
+# 51
+typedef struct
+{
+uint8_t power1[2];
+uint8_t power2[2];
+uint8_t power3[2];
+uint8_t power4[2];
+uint8_t power5[2];
+uint8_t temp[2];
+uint8_t obc2:1;
+uint8_t powmcu:1;
+} cw_t;
+
+extern cw_t cw;
+
+# 104
+void sysprot_init(void);
+
+# 130
+uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
+
+# 143
+void cw_data_set(cw_t *p_cw_data);
+
+# 155
+void get_cw_data(void);
+
+# 169
+void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
 
 
-# 17 "OBC2_main.c"
+void receive_data_master(destination_t destination);
+
+# 49 "spi_master.h"
+void spi_master_start(void);
+
+# 62
+uint8_t spi_master_receive(destination_t destination);
+
+# 77
+void spi_master_send(destination_t destination, uint8_t data);
+
+# 90
+void spi_master_stop(void);
+
+
+# 19 "OBC2_main.c"
 #pragma config FOSC = HS, WDTE = OFF, PWRTE = ON, BOREN = ON, LVP = OFF
 #pragma config CPD = OFF, WRT = OFF, CP = OFF
 
-typedef struct
-{
-unsigned char preint;
-unsigned char data_type;
-unsigned char payload_index_end;
-unsigned char payload;
-unsigned char data_end;
-} packet_t;
+void interrupt I2Ctemp(void);
 
-typedef struct
-{
-unsigned char power1[4];
-unsigned char power2[4];
-unsigned char temp[4];
-unsigned char OBC2:1;
-unsigned char COMMUC:1;
-unsigned char POWMCU:1;
-} cw_t;
-
-# 46
-int i=0;
-
-
-void interrupt isr(void);
+cw_t cw = { {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, 0, 0 };
 
 int main(void){
 
-TRISD6 = 0;
-
-# 62
+TRISDbits.TRISD7 = 0;
+PORTDbits.RD7 = 0;
+OBC1_RESET_init();
+I2C_init();
 uart_init();
+PORTDbits.RD7 = 1;
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+PORTDbits.RD7 = 0;
+_delay((unsigned long)((1000)*(20000000/4000.0)));
 
 
-put_string("Hello! TSP!\r\n");
-
-# 92
 while(1)
 {
-put_string("Start\r\n");
-RD6 = 1;
+PORTDbits.RD7 = 1;
 _delay((unsigned long)((100)*(20000000/4000.0)));
+interrupt_able();
 
-# 111
-put_string("End\r\n");
-RD6 = 0;
+# 57
+PORTDbits.RD7 = 0;
 _delay((unsigned long)((100)*(20000000/4000.0)));
 }
-
 return 0;
 }
 
+# 74
+void interrupt I2Ctemp(void)
+{
+if(PIR1bits.RCIF == 1)
+{
+PIR1bits.RCIF == 0;
+interrupt_disable();
+trans_I2Ctemp();
+}
+}

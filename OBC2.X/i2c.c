@@ -135,3 +135,4 @@ void I2C_GetData(unsigned char slave_adr, unsigned char *Buffer, unsigned char C
     Buffer[i] = I2C_Rcv(1);
     I2C_Stop();
 }    
+

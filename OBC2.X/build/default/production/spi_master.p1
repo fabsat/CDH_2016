@@ -1,43 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"43 spi.c
-[c E1157 0 1 .. ]
-[n E1157 . SPI_ISR_ENABLE SPI_ISR_DISABLE  ]
-"2709 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[v _TRISC3 `Vb ~T0 @X0 0 e@1083 ]
-"2711
-[v _TRISC4 `Vb ~T0 @X0 0 e@1084 ]
-"2713
-[v _TRISC5 `Vb ~T0 @X0 0 e@1085 ]
-"2685
-[v _TRISA5 `Vb ~T0 @X0 0 e@1069 ]
-"1130
-[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :2 `uc 1 ]
-[n S47 . ADON . GO_nDONE CHS ADCS ]
-"1137
-[s S48 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S48 . . GO CHS0 CHS1 CHS2 ADCS0 ADCS1 ]
-"1146
-[s S49 :2 `uc 1 :1 `uc 1 ]
-[n S49 . . nDONE ]
-"1150
-[s S50 :2 `uc 1 :1 `uc 1 ]
-[n S50 . . GO_DONE ]
-"1129
-[u S46 `S47 1 `S48 1 `S49 1 `S50 1 ]
-[n S46 . . . . . ]
-"1155
-[v _ADCON0bits `VS46 ~T0 @X0 0 e@31 ]
-"2181
-[s S92 :4 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S92 . PCFG . ADCS2 ADFM ]
-"2187
-[s S93 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S93 . PCFG0 PCFG1 PCFG2 PCFG3 ]
-"2180
-[u S91 `S92 1 `S93 1 ]
-[n S91 . . . ]
-"2194
-[v _ADCON1bits `VS91 ~T0 @X0 0 e@159 ]
+"1404 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S59 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1403
+[u S58 `S59 1 ]
+[n S58 . . ]
+"1415
+[v _TRISCbits `VS58 ~T0 @X0 0 e@135 ]
 "799
 [s S33 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S33 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -75,45 +44,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S73 . . . . . . . . ]
 "1836
 [v _SSPSTATbits `VS73 ~T0 @X0 0 e@148 ]
-"525
-[s S22 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S22 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
-"524
-[u S21 `S22 1 ]
-[n S21 . . ]
-"536
-[v _PIR1bits `VS21 ~T0 @X0 0 e@12 ]
-"1582
-[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S65 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
-"1581
-[u S64 `S65 1 ]
-[n S64 . . ]
-"1593
-[v _PIE1bits `VS64 ~T0 @X0 0 e@140 ]
-"448
-[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S19 . RBIF INTF TMR0IF RBIE INTE TMR0IE PEIE GIE ]
-"458
-[s S20 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S20 . . T0IF . T0IE ]
-"447
-[u S18 `S19 1 `S20 1 ]
-[n S18 . . . ]
-"465
-[v _INTCONbits `VS18 ~T0 @X0 0 e@11 ]
-"787
+"276
+[s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S11 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"275
+[u S10 `S11 1 ]
+[n S10 . . ]
+"287
+[v _PORTCbits `VS10 ~T0 @X0 0 e@7 ]
+"81 spi_master.c
+[c E1099 2 3 4 .. ]
+[n E1099 . OBC2 COM POW  ]
+"787 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
 [v _SSPBUF `Vuc ~T0 @X0 0 e@19 ]
-"16 C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h
-[v _putch `(v ~T0 @X0 0 ef1`uc ]
-"195 C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"26 spi.c
-[v _spi_reset `(v ~T0 @X0 0 sf ]
-"2609 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[v _SSPEN `Vb ~T0 @X0 0 e@165 ]
-"2613
-[v _SSPIF `Vb ~T0 @X0 0 e@99 ]
+"337
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"336
+[u S12 `S13 1 ]
+[n S12 . . ]
+"348
+[v _PORTDbits `VS12 ~T0 @X0 0 e@8 ]
+[v F1091 `(v ~T0 @X0 1 tf1`ul ]
+"150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
+[v __delay `JF1091 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1131,284 +1086,490 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 25: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;spi.h: 27: typedef enum
-[; ;spi.h: 28: {
-[; ;spi.h: 29: SPI_ISR_ENABLE,
-[; ;spi.h: 30: SPI_ISR_DISABLE,
-[; ;spi.h: 31: } spi_isr_set_t;
-[; ;spi.h: 49: void spi_slave_init(spi_isr_set_t spi_isr);
-[; ;spi.h: 66: char spi_send_receive(char data);
-[; ;spi.h: 79: void spi_interrupt(void);
-[; ;uart_serial.h: 39: void uart_init();
-[; ;uart_serial.h: 40: void putch(unsigned char byte);
-[; ;uart_serial.h: 41: void put_string(unsigned char *str);
-[; ;uart_serial.h: 42: unsigned char getch();
-[; ;uart_serial.h: 43: unsigned char getche();
-[; ;spi.c: 26: static void spi_reset(void);
-"42 spi.c
-[v _spi_slave_init `(v ~T0 @X0 1 ef1`E1157 ]
-"43
+[; ;pic_clock.h: 24: typedef unsigned char uint8_t;
+[; ;pic_clock.h: 25: typedef signed char int8_t;
+[; ;pic_clock.h: 26: typedef unsigned int uint16_t;
+[; ;pic_clock.h: 27: typedef signed int int16_t;
+[; ;system_protocol.h: 10: typedef enum
+[; ;system_protocol.h: 11: {
+[; ;system_protocol.h: 12: OBC2 = 0x02,
+[; ;system_protocol.h: 13: COM,
+[; ;system_protocol.h: 14: POW,
+[; ;system_protocol.h: 15: } destination_t;
+[; ;system_protocol.h: 23: typedef enum
+[; ;system_protocol.h: 24: {
+[; ;system_protocol.h: 25: CW_TYPE = 0x01,
+[; ;system_protocol.h: 26: DATA_TYPE,
+[; ;system_protocol.h: 27: } data_type_t;
+[; ;system_protocol.h: 39: typedef enum
+[; ;system_protocol.h: 40: {
+[; ;system_protocol.h: 41: DATA_END = 0b00010000,
+[; ;system_protocol.h: 42: DATA_CONTINUE,
+[; ;system_protocol.h: 43: } data_end_command_t;
+[; ;system_protocol.h: 51: typedef struct
+[; ;system_protocol.h: 52: {
+[; ;system_protocol.h: 53: uint8_t power1[2];
+[; ;system_protocol.h: 54: uint8_t power2[2];
+[; ;system_protocol.h: 55: uint8_t power3[2];
+[; ;system_protocol.h: 56: uint8_t power4[2];
+[; ;system_protocol.h: 57: uint8_t power5[2];
+[; ;system_protocol.h: 58: uint8_t temp[2];
+[; ;system_protocol.h: 59: uint8_t obc2:1;
+[; ;system_protocol.h: 60: uint8_t powmcu:1;
+[; ;system_protocol.h: 61: } cw_t;
+[; ;system_protocol.h: 63: extern cw_t cw;
+[; ;system_protocol.h: 104: void sysprot_init(void);
+[; ;system_protocol.h: 130: uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
+[; ;system_protocol.h: 143: void cw_data_set(cw_t *p_cw_data);
+[; ;system_protocol.h: 155: void get_cw_data(void);
+[; ;system_protocol.h: 169: void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
+[; ;system_protocol.h: 172: void receive_data_master(destination_t destination);
+[; ;spi_master.h: 49: void spi_master_start(void);
+[; ;spi_master.h: 62: uint8_t spi_master_receive(destination_t destination);
+[; ;spi_master.h: 77: void spi_master_send(destination_t destination, uint8_t data);
+[; ;spi_master.h: 90: void spi_master_stop(void);
+"36 spi_master.c
+[v _spi_master_start `(v ~T0 @X0 1 ef ]
+"37
 {
-[; ;spi.c: 42: void spi_slave_init(spi_isr_set_t spi_isr)
-[; ;spi.c: 43: {
-[e :U _spi_slave_init ]
-"42
-[v _spi_isr `E1157 ~T0 @X0 1 r1 ]
-"43
+[; ;spi_master.c: 36: void spi_master_start(void)
+[; ;spi_master.c: 37: {
+[e :U _spi_master_start ]
 [f ]
-[; ;spi.c: 45: TRISC3 = 1;
+[; ;spi_master.c: 39: TRISCbits.TRISC3 = 0;
+"39
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+[; ;spi_master.c: 40: TRISCbits.TRISC5 = 0;
+"40
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;spi_master.c: 41: TRISCbits.TRISC4 = 1;
+"41
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+[; ;spi_master.c: 44: TRISCbits.TRISC0 = 0;
+"44
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_master.c: 45: TRISCbits.TRISC1 = 0;
 "45
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;spi.c: 46: TRISC4 = 1;
-"46
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;spi.c: 47: TRISC5 = 0;
-"47
-[e = _TRISC5 -> -> 0 `i `b ]
-[; ;spi.c: 48: TRISA5 = 1;
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+[; ;spi_master.c: 48: SSPCONbits.SSPEN = 0;
 "48
-[e = _TRISA5 -> -> 1 `i `b ]
-[; ;spi.c: 49: ADCON0bits.ADON = 0;
-"49
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-[; ;spi.c: 50: ADCON1bits.PCFG3 = 0;
-"50
-[e = . . _ADCON1bits 1 3 -> -> 0 `i `uc ]
-[; ;spi.c: 51: ADCON1bits.PCFG2 = 1;
-"51
-[e = . . _ADCON1bits 1 2 -> -> 1 `i `uc ]
-[; ;spi.c: 52: ADCON1bits.PCFG1 = 1;
-"52
-[e = . . _ADCON1bits 1 1 -> -> 1 `i `uc ]
-[; ;spi.c: 55: SSPCONbits.SSPEN = 0;
-"55
 [e = . . _SSPCONbits 0 2 -> -> 0 `i `uc ]
-[; ;spi.c: 58: SSPSTATbits.SMP = 0;
-"58
+[; ;spi_master.c: 51: SSPSTATbits.SMP = 0;
+"51
 [e = . . _SSPSTATbits 0 7 -> -> 0 `i `uc ]
-[; ;spi.c: 59: SSPCONbits.CKP = 0;
-"59
+[; ;spi_master.c: 52: SSPCONbits.CKP = 0;
+"52
 [e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
-[; ;spi.c: 60: SSPSTATbits.CKE = 0;
-"60
+[; ;spi_master.c: 53: SSPSTATbits.CKE = 0;
+"53
 [e = . . _SSPSTATbits 0 6 -> -> 0 `i `uc ]
-[; ;spi.c: 63: SSPCONbits.SSPM3 = 0;
-"63
+[; ;spi_master.c: 56: SSPCONbits.SSPM3 = 0;
+"56
 [e = . . _SSPCONbits 1 3 -> -> 0 `i `uc ]
-[; ;spi.c: 64: SSPCONbits.SSPM2 = 1;
-"64
-[e = . . _SSPCONbits 1 2 -> -> 1 `i `uc ]
-[; ;spi.c: 65: SSPCONbits.SSPM1 = 0;
-"65
+[; ;spi_master.c: 57: SSPCONbits.SSPM2 = 0;
+"57
+[e = . . _SSPCONbits 1 2 -> -> 0 `i `uc ]
+[; ;spi_master.c: 58: SSPCONbits.SSPM1 = 0;
+"58
 [e = . . _SSPCONbits 1 1 -> -> 0 `i `uc ]
-[; ;spi.c: 66: SSPCONbits.SSPM0 = 0;
-"66
+[; ;spi_master.c: 59: SSPCONbits.SSPM0 = 0;
+"59
 [e = . . _SSPCONbits 1 0 -> -> 0 `i `uc ]
-[; ;spi.c: 69: if(spi_isr == SPI_ISR_ENABLE)
-"69
-[e $ ! == -> _spi_isr `i -> . `E1157 0 `i 98  ]
-[; ;spi.c: 70: {
-"70
-{
-[; ;spi.c: 71: PIR1bits.SSPIF = 0;
-"71
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;spi.c: 72: PIE1bits.SSPIE = 1;
-"72
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-[; ;spi.c: 73: INTCONbits.PEIE = 1;
-"73
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;spi.c: 74: INTCONbits.GIE = 1;
-"74
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"75
-}
-[e :U 98 ]
-[; ;spi.c: 75: }
-[; ;spi.c: 78: SSPCONbits.SSPEN = 1;
-"78
+[; ;spi_master.c: 62: PORTCbits.RC0 = 1;
+"62
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_master.c: 63: PORTCbits.RC1 = 1;
+"63
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;spi_master.c: 66: SSPCONbits.SSPEN = 1;
+"66
 [e = . . _SSPCONbits 0 2 -> -> 1 `i `uc ]
-[; ;spi.c: 79: }
-"79
+[; ;spi_master.c: 67: }
+"67
 [e :UE 97 ]
 }
-"92
-[v _spi_interrupt `(v ~T0 @X0 1 ef ]
-"93
+"80
+[v _spi_master_receive `(uc ~T0 @X0 1 ef1`E1099 ]
+"81
 {
-[; ;spi.c: 92: void spi_interrupt(void)
-[; ;spi.c: 93: {
-[e :U _spi_interrupt ]
+[; ;spi_master.c: 80: uint8_t spi_master_receive(destination_t destination)
+[; ;spi_master.c: 81: {
+[e :U _spi_master_receive ]
+"80
+[v _destination `E1099 ~T0 @X0 1 r1 ]
+"81
 [f ]
-"94
-[v _data `uc ~T0 @X0 1 a ]
-[; ;spi.c: 94: char data;
-[; ;spi.c: 96: data = SSPBUF;
-"96
-[e = _data _SSPBUF ]
-[; ;spi.c: 98: putch(data);
-"98
-[e ( _putch (1 _data ]
-[; ;spi.c: 99: }
-"99
-[e :UE 99 ]
-}
-"117
-[v _spi_send_receive `(uc ~T0 @X0 1 ef1`uc ]
-"118
-{
-[; ;spi.c: 117: char spi_send_receive(char data)
-[; ;spi.c: 118: {
-[e :U _spi_send_receive ]
-"117
-[v _data `uc ~T0 @X0 1 r1 ]
-"118
-[f ]
-"119
-[v _received_data `uc ~T0 @X0 1 a ]
-"120
-[v _timeout_counter `uc ~T0 @X0 1 a ]
-[; ;spi.c: 119: char received_data;
-[; ;spi.c: 120: unsigned char timeout_counter = 0;
-[e = _timeout_counter -> -> 0 `i `uc ]
-"121
-[v _reset_counter `uc ~T0 @X0 1 a ]
-[; ;spi.c: 121: unsigned char reset_counter = 0xFF;
-[e = _reset_counter -> -> 255 `i `uc ]
-[; ;spi.c: 124: SSPBUF = data;
-"124
-[e = _SSPBUF _data ]
-[; ;spi.c: 127: while(SSPSTATbits.BF == 0)
-"127
-[e $U 101  ]
-[e :U 102 ]
-[; ;spi.c: 128: {
-"128
-{
-[; ;spi.c: 129: printf("into while\r\n");
-"129
-[e ( _printf :s 1C ]
-[; ;spi.c: 131: if(reset_counter == 0x00 && timeout_counter < 2)
-"131
-[e $ ! && == -> _reset_counter `i -> 0 `i < -> _timeout_counter `i -> 2 `i 104  ]
-[; ;spi.c: 132: {
-"132
-{
-[; ;spi.c: 133: spi_reset();
-"133
-[e ( _spi_reset ..  ]
-[; ;spi.c: 134: timeout_counter++;
-"134
-[e ++ _timeout_counter -> -> 1 `i `uc ]
-[; ;spi.c: 135: continue;
-"135
-[e $U 101  ]
-"136
-}
-[e :U 104 ]
-[; ;spi.c: 136: }
-[; ;spi.c: 139: if(timeout_counter == 2)
-"139
-[e $ ! == -> _timeout_counter `i -> 2 `i 105  ]
-[; ;spi.c: 140: {
-"140
-{
-[; ;spi.c: 141: return -1;
-"141
-[e ) -> -U -> 1 `i `uc ]
-[e $UE 100  ]
-"142
-}
-[e :U 105 ]
-[; ;spi.c: 142: }
-[; ;spi.c: 145: reset_counter--;
-"145
-[e -- _reset_counter -> -> 1 `i `uc ]
-"146
-}
-[e :U 101 ]
-"127
-[e $ == -> . . _SSPSTATbits 0 0 `i -> 0 `i 102  ]
-[e :U 103 ]
-[; ;spi.c: 146: }
-[; ;spi.c: 149: received_data = SSPBUF;
-"149
-[e = _received_data _SSPBUF ]
-[; ;spi.c: 150: SSPBUF = 0xFF;
-"150
-[e = _SSPBUF -> -> 255 `i `uc ]
-[; ;spi.c: 152: return received_data;
-"152
-[e ) _received_data ]
-[e $UE 100  ]
-[; ;spi.c: 153: }
-"153
-[e :UE 100 ]
-}
-"166
-[v _spi_reset `(v ~T0 @X0 1 sf ]
-"167
-{
-[; ;spi.c: 166: static void spi_reset(void)
-[; ;spi.c: 167: {
-[e :U _spi_reset ]
-[f ]
-"168
+"82
 [v _dummy `uc ~T0 @X0 1 a ]
-[; ;spi.c: 168: unsigned char dummy;
-[; ;spi.c: 170: SSPEN = 0;
-"170
-[e = _SSPEN -> -> 0 `i `b ]
-[; ;spi.c: 171: SSPEN = 1;
-"171
-[e = _SSPEN -> -> 1 `i `b ]
-[; ;spi.c: 172: dummy = SSPBUF;
-"172
+"83
+[v _timeout_counter `ui ~T0 @X0 1 a ]
+[; ;spi_master.c: 82: uint8_t dummy;
+[; ;spi_master.c: 83: uint16_t timeout_counter = 1000;
+[e = _timeout_counter -> -> 1000 `i `ui ]
+[; ;spi_master.c: 86: dummy = SSPBUF;
+"86
 [e = _dummy _SSPBUF ]
-[; ;spi.c: 173: SSPIF = 0;
-"173
-[e = _SSPIF -> -> 0 `i `b ]
-[; ;spi.c: 174: SSPEN = 0;
-"174
-[e = _SSPEN -> -> 0 `i `b ]
-[; ;spi.c: 175: SSPEN = 1;
-"175
-[e = _SSPEN -> -> 1 `i `b ]
-[; ;spi.c: 176: }
-"176
-[e :UE 106 ]
+[; ;spi_master.c: 89: switch(destination)
+"89
+[e $U 100  ]
+[; ;spi_master.c: 90: {
+"90
+{
+[; ;spi_master.c: 91: case COM:
+"91
+[e :U 101 ]
+[; ;spi_master.c: 92: while(PORTDbits.RD0 == 0){;}
+"92
+[e $U 102  ]
+[e :U 103 ]
+{
 }
-[p f _printf 8388608 ]
-[a 1C 105 110 116 111 32 119 104 105 108 101 13 10 0 ]
-
+[e :U 102 ]
+[e $ == -> . . _PORTDbits 0 0 `i -> 0 `i 103  ]
+[e :U 104 ]
+[; ;spi_master.c: 93: break;
+"93
+[e $U 99  ]
+[; ;spi_master.c: 94: case POW:
+"94
+[e :U 105 ]
+[; ;spi_master.c: 95: while(PORTDbits.RD1 == 0){;}
+"95
+[e $U 106  ]
+[e :U 107 ]
+{
+}
+[e :U 106 ]
+[e $ == -> . . _PORTDbits 0 1 `i -> 0 `i 107  ]
+[e :U 108 ]
+[; ;spi_master.c: 96: break;
+"96
+[e $U 99  ]
+"97
+}
+[; ;spi_master.c: 97: }
+[e $U 99  ]
+"89
+[e :U 100 ]
+[e [\ _destination , $ . `E1099 1 101
+ , $ . `E1099 2 105
+ 99 ]
+"97
+[e :U 99 ]
+[; ;spi_master.c: 100: switch(destination)
+"100
+[e $U 110  ]
+[; ;spi_master.c: 101: {
+"101
+{
+[; ;spi_master.c: 102: case COM:
+"102
+[e :U 111 ]
+[; ;spi_master.c: 103: PORTCbits.RC0 = 0;
+"103
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_master.c: 104: break;
+"104
+[e $U 109  ]
+[; ;spi_master.c: 105: case POW:
+"105
+[e :U 112 ]
+[; ;spi_master.c: 106: PORTCbits.RC1 = 0;
+"106
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+[; ;spi_master.c: 107: break;
+"107
+[e $U 109  ]
+"108
+}
+[; ;spi_master.c: 108: }
+[e $U 109  ]
+"100
+[e :U 110 ]
+[e [\ _destination , $ . `E1099 1 111
+ , $ . `E1099 2 112
+ 109 ]
+"108
+[e :U 109 ]
+[; ;spi_master.c: 112: SSPBUF = 0x00;
+"112
+[e = _SSPBUF -> -> 0 `i `uc ]
+[; ;spi_master.c: 115: while(SSPSTATbits.BF == 0)
+"115
+[e $U 113  ]
+[e :U 114 ]
+[; ;spi_master.c: 116: {
+"116
+{
+[; ;spi_master.c: 118: if(timeout_counter == 0)
+"118
+[e $ ! == _timeout_counter -> -> 0 `i `ui 116  ]
+[; ;spi_master.c: 119: {
+"119
+{
+[; ;spi_master.c: 120: return;
+"120
+[e $UE 98  ]
+"121
+}
+[e :U 116 ]
+[; ;spi_master.c: 121: }
+[; ;spi_master.c: 124: _delay((unsigned long)((1)*(20000000/4000000.0)));
+"124
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;spi_master.c: 125: timeout_counter--;
+"125
+[e -- _timeout_counter -> -> 1 `i `ui ]
+"126
+}
+[e :U 113 ]
+"115
+[e $ == -> . . _SSPSTATbits 0 0 `i -> 0 `i 114  ]
+[e :U 115 ]
+[; ;spi_master.c: 126: }
+[; ;spi_master.c: 129: switch(destination)
+"129
+[e $U 118  ]
+[; ;spi_master.c: 130: {
+"130
+{
+[; ;spi_master.c: 131: case COM:
+"131
+[e :U 119 ]
+[; ;spi_master.c: 132: PORTCbits.RC0 = 1;
+"132
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_master.c: 133: break;
+"133
+[e $U 117  ]
+[; ;spi_master.c: 134: case POW:
+"134
+[e :U 120 ]
+[; ;spi_master.c: 135: PORTCbits.RC1 = 1;
+"135
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;spi_master.c: 136: break;
+"136
+[e $U 117  ]
+"137
+}
+[; ;spi_master.c: 137: }
+[e $U 117  ]
+"129
+[e :U 118 ]
+[e [\ _destination , $ . `E1099 1 119
+ , $ . `E1099 2 120
+ 117 ]
+"137
+[e :U 117 ]
+[; ;spi_master.c: 139: return SSPBUF;
+"139
+[e ) _SSPBUF ]
+[e $UE 98  ]
+[; ;spi_master.c: 140: }
+"140
+[e :UE 98 ]
+}
+"154
+[v _spi_master_send `(v ~T0 @X0 1 ef2`E1099`uc ]
+"155
+{
+[; ;spi_master.c: 154: void spi_master_send(destination_t destination, uint8_t data)
+[; ;spi_master.c: 155: {
+[e :U _spi_master_send ]
+"154
+[v _destination `E1099 ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+"155
+[f ]
+"156
+[v _dummy `uc ~T0 @X0 1 a ]
+"157
+[v _timeout_counter `ui ~T0 @X0 1 a ]
+[; ;spi_master.c: 156: uint8_t dummy;
+[; ;spi_master.c: 157: uint16_t timeout_counter = 1000;
+[e = _timeout_counter -> -> 1000 `i `ui ]
+[; ;spi_master.c: 160: dummy = SSPBUF;
+"160
+[e = _dummy _SSPBUF ]
+[; ;spi_master.c: 163: switch(destination)
+"163
+[e $U 123  ]
+[; ;spi_master.c: 164: {
+"164
+{
+[; ;spi_master.c: 165: case COM:
+"165
+[e :U 124 ]
+[; ;spi_master.c: 166: while(PORTDbits.RD0 == 0){;}
+"166
+[e $U 125  ]
+[e :U 126 ]
+{
+}
+[e :U 125 ]
+[e $ == -> . . _PORTDbits 0 0 `i -> 0 `i 126  ]
+[e :U 127 ]
+[; ;spi_master.c: 167: break;
+"167
+[e $U 122  ]
+[; ;spi_master.c: 168: case POW:
+"168
+[e :U 128 ]
+[; ;spi_master.c: 169: while(PORTDbits.RD1 == 0){;}
+"169
+[e $U 129  ]
+[e :U 130 ]
+{
+}
+[e :U 129 ]
+[e $ == -> . . _PORTDbits 0 1 `i -> 0 `i 130  ]
+[e :U 131 ]
+[; ;spi_master.c: 170: break;
+"170
+[e $U 122  ]
+"171
+}
+[; ;spi_master.c: 171: }
+[e $U 122  ]
+"163
+[e :U 123 ]
+[e [\ _destination , $ . `E1099 1 124
+ , $ . `E1099 2 128
+ 122 ]
+"171
+[e :U 122 ]
+[; ;spi_master.c: 174: switch(destination)
+"174
+[e $U 133  ]
+[; ;spi_master.c: 175: {
+"175
+{
+[; ;spi_master.c: 176: case COM:
+"176
+[e :U 134 ]
+[; ;spi_master.c: 177: PORTCbits.RC0 = 0;
+"177
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_master.c: 178: break;
+"178
+[e $U 132  ]
+[; ;spi_master.c: 179: case POW:
+"179
+[e :U 135 ]
+[; ;spi_master.c: 180: PORTCbits.RC1 = 0;
+"180
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+[; ;spi_master.c: 181: break;
+"181
+[e $U 132  ]
+"182
+}
+[; ;spi_master.c: 182: }
+[e $U 132  ]
+"174
+[e :U 133 ]
+[e [\ _destination , $ . `E1099 1 134
+ , $ . `E1099 2 135
+ 132 ]
+"182
+[e :U 132 ]
+[; ;spi_master.c: 185: SSPBUF = data;
+"185
+[e = _SSPBUF _data ]
+[; ;spi_master.c: 188: while(SSPSTATbits.BF == 0)
+"188
+[e $U 136  ]
+[e :U 137 ]
+[; ;spi_master.c: 189: {
+"189
+{
+[; ;spi_master.c: 191: if(timeout_counter == 0)
+"191
+[e $ ! == _timeout_counter -> -> 0 `i `ui 139  ]
+[; ;spi_master.c: 192: {
+"192
+{
+[; ;spi_master.c: 193: return;
+"193
+[e $UE 121  ]
+"194
+}
+[e :U 139 ]
+[; ;spi_master.c: 194: }
+[; ;spi_master.c: 197: _delay((unsigned long)((1)*(20000000/4000000.0)));
+"197
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;spi_master.c: 198: timeout_counter--;
+"198
+[e -- _timeout_counter -> -> 1 `i `ui ]
+"199
+}
+[e :U 136 ]
+"188
+[e $ == -> . . _SSPSTATbits 0 0 `i -> 0 `i 137  ]
+[e :U 138 ]
+[; ;spi_master.c: 199: }
+[; ;spi_master.c: 202: switch(destination)
+"202
+[e $U 141  ]
+[; ;spi_master.c: 203: {
+"203
+{
+[; ;spi_master.c: 204: case COM:
+"204
+[e :U 142 ]
+[; ;spi_master.c: 205: PORTCbits.RC0 = 1;
+"205
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;spi_master.c: 206: break;
+"206
+[e $U 140  ]
+[; ;spi_master.c: 207: case POW:
+"207
+[e :U 143 ]
+[; ;spi_master.c: 208: PORTCbits.RC1 = 1;
+"208
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;spi_master.c: 209: break;
+"209
+[e $U 140  ]
+"210
+}
+[; ;spi_master.c: 210: }
+[e $U 140  ]
+"202
+[e :U 141 ]
+[e [\ _destination , $ . `E1099 1 142
+ , $ . `E1099 2 143
+ 140 ]
+"210
+[e :U 140 ]
+[; ;spi_master.c: 213: dummy = SSPBUF;
+"213
+[e = _dummy _SSPBUF ]
+[; ;spi_master.c: 214: }
+"214
+[e :UE 121 ]
+}
+"227
+[v _spi_master_stop `(v ~T0 @X0 1 ef ]
+"228
+{
+[; ;spi_master.c: 227: void spi_master_stop(void)
+[; ;spi_master.c: 228: {
+[e :U _spi_master_stop ]
+[f ]
+[; ;spi_master.c: 230: PORTCbits.RC0 = 0;
+"230
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;spi_master.c: 231: PORTCbits.RC1 = 0;
+"231
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+[; ;spi_master.c: 234: SSPCONbits.SSPEN = 0;
+"234
+[e = . . _SSPCONbits 0 2 -> -> 0 `i `uc ]
+[; ;spi_master.c: 235: }
+"235
+[e :UE 144 ]
+}

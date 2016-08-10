@@ -1,10 +1,16 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"53 system_protocol.h
+"52 system_protocol.h
 [s S97 `uc -> 2 `i `uc -> 2 `i `uc -> 2 `i `uc -> 2 `i `uc -> 2 `i `uc -> 2 `i :1 `uc 1 :1 `uc 1 ]
 [n S97 . power1 power2 power3 power4 power5 temp obc2 powmcu ]
 [p mainexit ]
-"2733 /Applications/microchip/xc8/v1.35/include/pic16f877a.h
-[v _TRISD7 `Vb ~T0 @X0 0 e@1095 ]
+"1465 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"1464
+[u S60 `S61 1 ]
+[n S60 . . ]
+"1476
+[v _TRISDbits `VS60 ~T0 @X0 0 e@136 ]
 "337
 [s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S13 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
@@ -13,40 +19,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . . ]
 "348
 [v _PORTDbits `VS12 ~T0 @X0 0 e@8 ]
-"105 system_protocol.h
+"41 MCLR_reset.h
+[v _MCLR_init `(v ~T0 @X0 0 ef ]
+"101 system_protocol.h
 [v _sysprot_init `(v ~T0 @X0 0 ef ]
-"64 uart_serial.h
+"35 AD_value.h
+[v _ad_con_init `(v ~T0 @X0 0 ef ]
+"49 spi_master.h
+[v _spi_master_start `(v ~T0 @X0 0 ef ]
+"65 uart_serial.h
 [v _uart_init `(v ~T0 @X0 0 ef ]
-"91
-[v _put_string `(v ~T0 @X0 0 ef1`*uc ]
-"133 system_protocol.h
-[v _sent_data_set `(uc ~T0 @X0 0 ef3`*v`uc`uc ]
-"164
-[v _show_packet `(v ~T0 @X0 0 ef ]
-"2577 /Applications/microchip/xc8/v1.35/include/pic16f877a.h
-[v _RD7 `Vb ~T0 @X0 0 e@71 ]
+"18 OBC1_app.h
+[v _uart_interrupt `i ~T0 @X0 0 e ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
-"150 /Applications/microchip/xc8/v1.35/include/pic.h
+"150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
 [p i __delay ]
-"81 OBC1_main.c
-[v _get_cw_data `(i ~T0 @X0 0 ef ]
-"146 system_protocol.h
-[v _cw_data_set `(v ~T0 @X0 0 ef1`*S97 ]
-"83 OBC1_main.c
-[c E1173 2 3 4 .. ]
-[n E1173 . OBC2 COM POW  ]
-[c E1178 1 2 3 .. ]
-[n E1178 . CW_TYPE DATA_TYPE COMMAND_TYPE  ]
-[c E1183 16 17 .. ]
-[n E1183 . DATA_END DATA_CONTINUE  ]
-"161 system_protocol.h
-[v _send_data_master `(v ~T0 @X0 0 ef3`E1173`E1178`E1183 ]
+"54 OBC1_main.c
+[c E1181 2 3 4 .. ]
+[n E1181 . OBC2 COM POW  ]
+"77 spi_master.h
+[v _spi_master_send_int `(v ~T0 @X0 0 ef2`E1181`uc ]
+"90
+[v _spi_master_send `(v ~T0 @X0 0 ef2`E1181`uc ]
+"525 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S22 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S22 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
+"524
+[u S21 `S22 1 ]
+[n S21 . . ]
+"536
+[v _PIR1bits `VS21 ~T0 @X0 0 e@12 ]
+"19 OBC1_app.h
+[v _I2CTEMP_data `uc ~T0 @X0 -> 0 `x e ]
+"14 C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h
+[v _getch `(uc ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f877a.h: 49: extern volatile unsigned char INDF @ 0x000;
-"51 /Applications/microchip/xc8/v1.35/include/pic16f877a.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
 [; ;pic16f877a.h: 51: asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
 [; ;pic16f877a.h: 55: extern volatile unsigned char TMR0 @ 0x001;
@@ -1093,10 +1105,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_clock.h: 29: typedef signed char int8_t;
 [; ;pic_clock.h: 30: typedef unsigned int uint16_t;
 [; ;pic_clock.h: 31: typedef signed int int16_t;
-[; ;uart_serial.h: 64: void uart_init(void);
-[; ;uart_serial.h: 77: void putch(uint8_t byte);
-[; ;uart_serial.h: 91: void put_string(uint8_t *str);
-[; ;uart_serial.h: 104: uint8_t getch(void);
+[; ;MCLR_reset.h: 41: void MCLR_init(void);
+[; ;MCLR_reset.h: 55: void MCLR_reset(uint8_t resetted_mcu);
+[; ;uint8_to_string.h: 23: void uint8_to_string(uint8_t num, uint8_t *p_str_buf, uint8_t buf_size);
+[; ;uart_serial.h: 65: void uart_init(void);
+[; ;uart_serial.h: 78: void putch(uint8_t byte);
+[; ;uart_serial.h: 92: void put_string(uint8_t *str);
+[; ;uart_serial.h: 107: uint8_t getch(void);
 [; ;AD_value.h: 35: void ad_con_init(void);
 [; ;AD_value.h: 48: uint16_t get_adcon(void);
 [; ;plati_temp.h: 34: double get_temp(void);
@@ -1110,48 +1125,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system_protocol.h: 24: {
 [; ;system_protocol.h: 25: CW_TYPE = 0x01,
 [; ;system_protocol.h: 26: DATA_TYPE,
-[; ;system_protocol.h: 27: COMMAND_TYPE,
-[; ;system_protocol.h: 28: } data_type_t;
-[; ;system_protocol.h: 40: typedef enum
-[; ;system_protocol.h: 41: {
-[; ;system_protocol.h: 42: DATA_END = 0b00010000,
-[; ;system_protocol.h: 43: DATA_CONTINUE,
-[; ;system_protocol.h: 44: } data_end_command_t;
-[; ;system_protocol.h: 52: typedef struct
-[; ;system_protocol.h: 53: {
-[; ;system_protocol.h: 54: uint8_t power1[2];
-[; ;system_protocol.h: 55: uint8_t power2[2];
-[; ;system_protocol.h: 56: uint8_t power3[2];
-[; ;system_protocol.h: 57: uint8_t power4[2];
-[; ;system_protocol.h: 58: uint8_t power5[2];
-[; ;system_protocol.h: 59: uint8_t temp[2];
-[; ;system_protocol.h: 60: uint8_t obc2:1;
-[; ;system_protocol.h: 61: uint8_t powmcu:1;
-[; ;system_protocol.h: 62: } cw_t;
-[; ;system_protocol.h: 64: extern cw_t cw;
-[; ;system_protocol.h: 105: void sysprot_init(void);
-[; ;system_protocol.h: 107: void cw_set(void);
-[; ;system_protocol.h: 133: uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
-[; ;system_protocol.h: 146: void cw_data_set(cw_t *p_cw_data);
-[; ;system_protocol.h: 161: void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
-[; ;system_protocol.h: 164: void show_packet(void);
-[; ;spi_master.h: 51: void spi_master_start(void);
-[; ;spi_master.h: 64: uint8_t spi_master_receive(destination_t destination);
-[; ;spi_master.h: 79: void spi_master_send(destination_t destination, uint8_t data);
-[; ;spi_master.h: 92: void spi_master_stop(void);
-[; ;MCLR_reset.h: 41: void MCLR_init(void);
-[; ;MCLR_reset.h: 55: void MCLR_reset(uint8_t resetted_mcu);
-"20 OBC1_main.c
+[; ;system_protocol.h: 27: } data_type_t;
+[; ;system_protocol.h: 39: typedef enum
+[; ;system_protocol.h: 40: {
+[; ;system_protocol.h: 41: DATA_END = 0b00010000,
+[; ;system_protocol.h: 42: DATA_CONTINUE,
+[; ;system_protocol.h: 43: } data_end_command_t;
+[; ;system_protocol.h: 51: typedef struct
+[; ;system_protocol.h: 52: {
+[; ;system_protocol.h: 53: uint8_t power1[2];
+[; ;system_protocol.h: 54: uint8_t power2[2];
+[; ;system_protocol.h: 55: uint8_t power3[2];
+[; ;system_protocol.h: 56: uint8_t power4[2];
+[; ;system_protocol.h: 57: uint8_t power5[2];
+[; ;system_protocol.h: 58: uint8_t temp[2];
+[; ;system_protocol.h: 59: uint8_t obc2:1;
+[; ;system_protocol.h: 60: uint8_t powmcu:1;
+[; ;system_protocol.h: 61: } cw_t;
+[; ;system_protocol.h: 63: extern cw_t cw;
+[; ;system_protocol.h: 101: void sysprot_init(void);
+[; ;system_protocol.h: 103: void cw_set(void);
+[; ;system_protocol.h: 129: uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_data);
+[; ;system_protocol.h: 142: void cw_data_set(cw_t *p_cw_data);
+[; ;system_protocol.h: 157: void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command);
+[; ;system_protocol.h: 170: void receive_data_master(destination_t destination);
+[; ;spi_master.h: 49: void spi_master_start(void);
+[; ;spi_master.h: 62: uint8_t spi_master_receive(destination_t destination);
+[; ;spi_master.h: 77: void spi_master_send_int(destination_t destination, uint8_t data);
+[; ;spi_master.h: 90: void spi_master_send(destination_t destination, uint8_t data);
+[; ;spi_master.h: 103: void spi_master_stop(void);
+[; ;OBC1_app.h: 18: extern int uart_interrupt;
+[; ;OBC1_app.h: 19: extern uint8_t I2CTEMP_data[2];
+[; ;OBC1_app.h: 22: uint8_t COM_status(void);
+[; ;OBC1_app.h: 23: void POW_status(void);
+[; ;OBC1_app.h: 24: void command(uint8_t data);
+"21 OBC1_main.c
 [p x FOSC=HS ]
 [p x WDTE=OFF ]
 [p x PWRTE=ON ]
 [p x BOREN=ON ]
 [p x LVP=OFF ]
-"21
+"22
 [p x CPD=OFF ]
 [p x WRT=OFF ]
 [p x CP=OFF ]
-"28
+"24
 [v _cw `S97 ~T0 @X0 1 e ]
 [i _cw
 :U ..
@@ -1185,156 +1203,241 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;OBC1_main.c: 28: cw_t cw = { {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, 0, 0 };
+[; ;OBC1_main.c: 24: cw_t cw = { {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, {0x00, 0x00}, 0, 0 };
+[; ;OBC1_main.c: 27: void interrupt get_uart(void);
+[; ;OBC1_main.c: 28: void check_bit(uint8_t data);
 "31
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [; ;OBC1_main.c: 31: int main(void){
 [e :U _main ]
 [f ]
-[; ;OBC1_main.c: 33: TRISD7 = 0;
+[; ;OBC1_main.c: 33: TRISDbits.TRISD7 = 0;
 "33
-[e = _TRISD7 -> -> 0 `i `b ]
+[e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
 [; ;OBC1_main.c: 34: PORTDbits.RD7 = 0;
 "34
 [e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
-[; ;OBC1_main.c: 37: sysprot_init();
-"37
-[e ( _sysprot_init ..  ]
-[; ;OBC1_main.c: 38: uart_init();
+[; ;OBC1_main.c: 35: TRISDbits.TRISD6 = 0;
+"35
+[e = . . _TRISDbits 0 6 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 36: PORTDbits.RD6 = 0;
+"36
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 38: TRISDbits.TRISD2 = 0;
 "38
+[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 40: PORTDbits.RD2 = 1;
+"40
+[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
+[; ;OBC1_main.c: 42: MCLR_init();
+"42
+[e ( _MCLR_init ..  ]
+[; ;OBC1_main.c: 43: sysprot_init();
+"43
+[e ( _sysprot_init ..  ]
+[; ;OBC1_main.c: 44: ad_con_init();
+"44
+[e ( _ad_con_init ..  ]
+[; ;OBC1_main.c: 45: spi_master_start();
+"45
+[e ( _spi_master_start ..  ]
+[; ;OBC1_main.c: 46: uart_init();
+"46
 [e ( _uart_init ..  ]
-[; ;OBC1_main.c: 48: put_string("Program Start!\r\n");
-"48
-[e ( _put_string (1 -> :s 1C `*uc ]
+[; ;OBC1_main.c: 47: uart_interrupt = 0;
+"47
+[e = _uart_interrupt -> 0 `i ]
+[; ;OBC1_main.c: 50: while(1)
 "50
-[v F1229 `Cd ~T0 @X0 1 s data0 ]
-[i F1229
-.1.0
-]
-"51
-[v F1230 `Cd ~T0 @X0 1 s data4 ]
-[i F1230
-.1.0
-]
-"52
-[v F1231 `Cuc ~T0 @X0 1 s data1 ]
-[i F1231
--> -> 1 `i `uc
-]
-"53
-[v F1232 `Cd ~T0 @X0 1 s data5 ]
-[i F1232
-.1.0
-]
-"54
-[v F1233 `Cui ~T0 @X0 1 s data2 ]
-[i F1233
--> -> 2 `i `ui
-]
-"55
-[v F1234 `Cd ~T0 @X0 1 s data3 ]
-[i F1234
-.1.0
-]
-[; ;OBC1_main.c: 50: const double data0 = 1.0;
-[; ;OBC1_main.c: 51: const double data4 = 1.0;
-[; ;OBC1_main.c: 52: const uint8_t data1 = 0x01;
-[; ;OBC1_main.c: 53: const double data5 = 1.0;
-[; ;OBC1_main.c: 54: const uint16_t data2 = 0x02;
-[; ;OBC1_main.c: 55: const double data3 = 1.0;
-[; ;OBC1_main.c: 57: sent_data_set(&data0, 1, 4);
-"57
-[e ( _sent_data_set (3 , , -> &U F1229 `*v -> -> 1 `i `uc -> -> 4 `i `uc ]
-[; ;OBC1_main.c: 58: sent_data_set(&data4, 1, 4);
-"58
-[e ( _sent_data_set (3 , , -> &U F1230 `*v -> -> 1 `i `uc -> -> 4 `i `uc ]
-[; ;OBC1_main.c: 60: sent_data_set(&data2, 1, 2);
-"60
-[e ( _sent_data_set (3 , , -> &U F1233 `*v -> -> 1 `i `uc -> -> 2 `i `uc ]
-[; ;OBC1_main.c: 61: sent_data_set(&data5, 1, 4);
-"61
-[e ( _sent_data_set (3 , , -> &U F1232 `*v -> -> 1 `i `uc -> -> 4 `i `uc ]
-[; ;OBC1_main.c: 62: sent_data_set(&data1, 1, 1);
-"62
-[e ( _sent_data_set (3 , , -> &U F1231 `*v -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;OBC1_main.c: 63: sent_data_set(&data3, 1, 4);
-"63
-[e ( _sent_data_set (3 , , -> &U F1234 `*v -> -> 1 `i `uc -> -> 4 `i `uc ]
-[; ;OBC1_main.c: 65: show_packet();
-"65
-[e ( _show_packet ..  ]
-[; ;OBC1_main.c: 68: while(1){
-"68
 [e :U 100 ]
+[; ;OBC1_main.c: 51: {
+"51
 {
-[; ;OBC1_main.c: 69: RD7 = 1;
-"69
-[e = _RD7 -> -> 1 `i `b ]
-[; ;OBC1_main.c: 71: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"71
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;OBC1_main.c: 73: RD7 = 0;
-"73
-[e = _RD7 -> -> 0 `i `b ]
-[; ;OBC1_main.c: 74: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"74
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"75
+[; ;OBC1_main.c: 52: PORTDbits.RD7 = 1;
+"52
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+[; ;OBC1_main.c: 53: _delay((unsigned long)((100)*(20000000/4000.0)));
+"53
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 54: spi_master_send_int(COM, 0x12);
+"54
+[e ( _spi_master_send_int (2 , . `E1181 1 -> -> 18 `i `uc ]
+[; ;OBC1_main.c: 55: _delay((unsigned long)((100)*(20000000/4000.0)));
+"55
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 56: spi_master_send_int(COM, 0x34);
+"56
+[e ( _spi_master_send_int (2 , . `E1181 1 -> -> 52 `i `uc ]
+[; ;OBC1_main.c: 57: _delay((unsigned long)((100)*(20000000/4000.0)));
+"57
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 58: spi_master_send(COM, 0x55);
+"58
+[e ( _spi_master_send (2 , . `E1181 1 -> -> 85 `i `uc ]
+[; ;OBC1_main.c: 114: PORTDbits.RD7 = 0;
+"114
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 115: _delay((unsigned long)((100)*(20000000/4000.0)));
+"115
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"116
 }
 [e :U 99 ]
-"68
+"50
 [e $U 100  ]
 [e :U 101 ]
-[; ;OBC1_main.c: 75: }
-[; ;OBC1_main.c: 77: while(1)
-"77
-[e :U 103 ]
-[; ;OBC1_main.c: 78: {
-"78
-{
-[; ;OBC1_main.c: 79: PORTDbits.RD7 = 1;
-"79
-[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
-[; ;OBC1_main.c: 80: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"80
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;OBC1_main.c: 81: get_cw_data();
-"81
-[e ( _get_cw_data ..  ]
-[; ;OBC1_main.c: 82: cw_data_set(&cw);
-"82
-[e ( _cw_data_set (1 &U _cw ]
-[; ;OBC1_main.c: 83: send_data_master(COM, 0x01, DATA_END);
-"83
-[e ( _send_data_master (3 , , . `E1173 1 -> -> 1 `i `E1178 . `E1183 0 ]
-[; ;OBC1_main.c: 84: PORTDbits.RD7 = 0;
-"84
-[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
-[; ;OBC1_main.c: 85: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"85
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;OBC1_main.c: 88: if(PORTDbits.RD0==0)
-"88
-[e $ ! == -> . . _PORTDbits 0 0 `i -> 0 `i 105  ]
-[; ;OBC1_main.c: 90: _delay((unsigned long)((10000)*(20000000/4000.0)));
-"90
-[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[e :U 105 ]
-"91
-}
-[e :U 102 ]
-"77
-[e $U 103  ]
-[e :U 104 ]
-[; ;OBC1_main.c: 91: }
-[; ;OBC1_main.c: 94: return 0;
-"94
+[; ;OBC1_main.c: 116: }
+[; ;OBC1_main.c: 118: return 0;
+"118
 [e ) -> 0 `i ]
 [e $UE 98  ]
-[; ;OBC1_main.c: 95: }
-"95
+[; ;OBC1_main.c: 119: }
+"119
 [e :UE 98 ]
 }
-[a 1C 80 114 111 103 114 97 109 32 83 116 97 114 116 33 13 10 0 ]
-
+[v F1243 `(v ~T0 @X0 1 tf ]
+"121
+[v _get_uart `IF1243 ~T0 @X0 1 e ]
+"122
+{
+[; ;OBC1_main.c: 121: void interrupt get_uart(void)
+[; ;OBC1_main.c: 122: {
+[e :U _get_uart ]
+[f ]
+[; ;OBC1_main.c: 123: if(PIR1bits.RCIF == 1)
+"123
+[e $ ! == -> . . _PIR1bits 0 5 `i -> 1 `i 103  ]
+[; ;OBC1_main.c: 124: {
+"124
+{
+[; ;OBC1_main.c: 125: PORTDbits.RD6 = 1;
+"125
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+[; ;OBC1_main.c: 126: _delay((unsigned long)((500)*(20000000/4000.0)));
+"126
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 127: PIR1bits.RCIF = 0;
+"127
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 128: I2CTEMP_data[uart_interrupt] = getch();
+"128
+[e = *U + &U _I2CTEMP_data * -> -> _uart_interrupt `ui `ux -> -> # *U &U _I2CTEMP_data `ui `ux ( _getch ..  ]
+[; ;OBC1_main.c: 129: spi_master_send(COM, I2CTEMP_data[uart_interrupt]);
+"129
+[e ( _spi_master_send (2 , . `E1181 1 *U + &U _I2CTEMP_data * -> -> _uart_interrupt `ui `ux -> -> # *U &U _I2CTEMP_data `ui `ux ]
+[; ;OBC1_main.c: 130: uart_interrupt++;
+"130
+[e ++ _uart_interrupt -> 1 `i ]
+[; ;OBC1_main.c: 131: PORTDbits.RD6 = 0;
+"131
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 132: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"132
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"133
+}
+[e :U 103 ]
+[; ;OBC1_main.c: 133: }
+[; ;OBC1_main.c: 134: }
+"134
+[e :UE 102 ]
+}
+"137
+[v _check_bit `(v ~T0 @X0 1 ef1`uc ]
+"138
+{
+[; ;OBC1_main.c: 137: void check_bit(uint8_t data)
+[; ;OBC1_main.c: 138: {
+[e :U _check_bit ]
+"137
+[v _data `uc ~T0 @X0 1 r1 ]
+"138
+[f ]
+"139
+[v F1257 `Cuc ~T0 @X0 1 s bit_mask ]
+[i F1257
+-> -> 128 `i `uc
+]
+[v _check_bit `uc ~T0 @X0 1 a ]
+"141
+[v _i `uc ~T0 @X0 1 a ]
+[; ;OBC1_main.c: 139: const uint8_t bit_mask = 0b10000000;
+[; ;OBC1_main.c: 140: uint8_t check_bit;
+[; ;OBC1_main.c: 141: uint8_t i;
+[; ;OBC1_main.c: 143: for(i = 0; i < 8; i++)
+"143
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 105  ]
+[e $U 106  ]
+"144
+[e :U 105 ]
+[; ;OBC1_main.c: 144: {
+{
+[; ;OBC1_main.c: 145: check_bit = bit_mask & data;
+"145
+[e = _check_bit -> & -> F1257 `i -> _data `i `uc ]
+[; ;OBC1_main.c: 147: PORTDbits.RD7 = 1;
+"147
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+[; ;OBC1_main.c: 148: _delay((unsigned long)((100)*(20000000/4000.0)));
+"148
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 149: PORTDbits.RD7 = 0;
+"149
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 150: _delay((unsigned long)((100)*(20000000/4000.0)));
+"150
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 152: if(check_bit)
+"152
+[e $ ! != -> _check_bit `i -> -> -> 0 `i `uc `i 108  ]
+[; ;OBC1_main.c: 153: {
+"153
+{
+[; ;OBC1_main.c: 154: PORTDbits.RD6 = 1;
+"154
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+[; ;OBC1_main.c: 155: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"155
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;OBC1_main.c: 156: PORTDbits.RD6 = 0;
+"156
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+[; ;OBC1_main.c: 157: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"157
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"158
+}
+[; ;OBC1_main.c: 158: }
+[e $U 109  ]
+"159
+[e :U 108 ]
+[; ;OBC1_main.c: 159: else
+[; ;OBC1_main.c: 160: {
+"160
+{
+[; ;OBC1_main.c: 161: _delay((unsigned long)((2000)*(20000000/4000.0)));
+"161
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"162
+}
+[e :U 109 ]
+[; ;OBC1_main.c: 162: }
+[; ;OBC1_main.c: 163: data <<= 1;
+"163
+[e =<< _data -> 1 `i ]
+"164
+}
+"143
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 105  ]
+[e :U 106 ]
+"164
+}
+[; ;OBC1_main.c: 164: }
+[; ;OBC1_main.c: 166: }
+"166
+[e :UE 104 ]
+}

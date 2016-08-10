@@ -1,23 +1,28 @@
-/************************************************
+/******************************************************************************************
  * uart_serial.c
+ * ver1.00
  * Tetsuya Kaku
- * =============================================
+ *=========================================================================================
  * uart通信(シリアル)定義ソースファイル
- * =============================================
- * ・ver1.00 初版 2015/12/09 Tetsuya Kaku
- * uartでPCとシリアル通信をする
- * =============================================
+ *
+ *=========================================================================================
+ * ・ver1.00 || 2015/12/09 || Tetsuya Kaku
+ *   初版
+ *=========================================================================================
  * PIC16F877A
  * MPLAB X IDE(v3.10/Win)
  * XC8 (v1.35/Win)
-************************************************/
+ *=========================================================================================
+ * Created by fabsat Project(Tokai university Satellite Project[TSP])
+ *****************************************************************************************/
 #include <xc.h>
 #include "uart_serial.h"
 #include "pic_clock.h"
+#include "uint8_to_string.h"
 
 
 /*=====================================================
- * @breif
+ * @brief
  *     uart通信初期設定関数
  * @param
  *     なし
@@ -26,46 +31,68 @@
  * @note
  *     型番によってRXピンを確認する必要がある
  *===================================================*/
-void uart_init()
+void uart_init(void)
 {
-    TRISC7 = 1;         // RX=RC7 is serial data input
+    TRISCbits.TRISC7 = 1;         // RX=RC7 is serial data input
     SPBRG = SPBRG_DATA;
     TXSTA = (TX9_RX9_DATA | BRGH_DATA | 0x20);
     RCSTA = (TX9_RX9_DATA | 0x90);
 }
 
-void putch(unsigned char byte)
+
+/*=====================================================
+ * @brief
+ *     1Byteデータ送信
+ * @param
+ *     byte:送信データ
+ * @return
+ *     void:
+ * @note
+ *     none
+ *===================================================*/
+void putch(uint8_t byte)
 {
-    while(!TXIF){
+    while(!TXIF)
+    {
+        ;
     }
     TXREG = byte;
 }
 
-void put_string(unsigned char *str)
-{
-    while(*str != '\0')
-    {
-        putch(*str++);
-    }
+
+/*=====================================================
+ * @brief
+ *     文字列送信
+ * @param
+ *     str:文字列へのポインタ
+ * @return
+ *     void:
+ * @note
+ *     none
+ *===================================================*/
+void put_string(uint8_t *str)
+{   
+    while(*str != '\0') putch(*str++);
     putch('\0');
 }
 
 
-unsigned char getch()
+/*=====================================================
+ * @brief
+ *     1Byte受信
+ * @param
+ *     void
+ * @return
+ *     data:受信したデータ
+ * @note
+ *     none
+ *===================================================*/
+uint8_t getch(void)
 {
-    while(!RCIF){
-    }
- 
+    int count = 0;
+    while(!RCIF && count <= 100) count++;       // カウントが100まで受信待ち
+   
     return RCREG;
 }
- 
-unsigned char getche()
-{
-    unsigned char c;
- 
-    c = getch();
-    putch(c);
- 
-    return c;
-}
+
 
