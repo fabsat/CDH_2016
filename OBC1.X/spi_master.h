@@ -24,11 +24,13 @@
 
 
 /* Slave Selectピン */
+#define SS_OBC2        PORTCbits.RC2
 #define SS_COM         PORTCbits.RC0
 #define SS_POW         PORTCbits.RC1
 
 
 /* SS pinのTRISレジスタ */
+#define SS_OBC2_TRIS   TRISCbits.TRISC2
 #define SS_COM_TRIS    TRISCbits.TRISC0
 #define SS_POW_TRIS    TRISCbits.TRISC1
 
@@ -62,19 +64,6 @@ void spi_master_start(void);
 uint8_t spi_master_receive(destination_t destination);
 
 
-
-/*=====================================================
- * @brief
- *     SPI Masterデータ送信関数(1Byte)
- * @param
- *     destination:通信の相手先を選択
- *     data     :送信データ
- * @return
- *     void:
- * @note
- *     1[ms]で送信完了しなければTIMEOUTとなる
- *===================================================*/
-void spi_master_send_int(destination_t destination, uint8_t data);
 
 /*=====================================================
  * @brief
