@@ -138,7 +138,7 @@ uint8_t sent_data_set(void *p_data, uint8_t data_len, uint8_t byte_of_type)
  *===================================================*/
 void send_data_master(destination_t destination, data_type_t data_type, data_end_command_t data_end_command)
 {
-    int i;
+    uint8_t i;
     
     /* データタイプと終了コマンドをパケットに格納 */
     tx_packet.data_type        = (uint8_t)data_type;
