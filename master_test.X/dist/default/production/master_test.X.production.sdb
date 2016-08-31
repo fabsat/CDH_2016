@@ -1,0 +1,468 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 6 ]
+"86 /Users/hirofumi/MPLABXProjects/master_test.X/spi_master.c
+[e E1101 . `uc
+OBC1 0
+OBC2 1
+COM 2
+POW 3
+]
+"71 /Users/hirofumi/MPLABXProjects/master_test.X/main.c
+[e E1109 . `uc
+OBC1 0
+OBC2 1
+COM 2
+POW 3
+]
+[e E1115 . `uc
+CW 1
+DATA 2
+COMMAND 3
+]
+[e E1120 . `uc
+DATA_END 16
+DATA_CONTINUE 17
+]
+"82
+[e E1097 . `uc
+FALSE 0
+TRUE 1
+]
+"54 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[e E1097 . `uc
+FALSE 0
+TRUE 1
+]
+"139
+[e E1101 . `uc
+OBC1 0
+OBC2 1
+COM 2
+POW 3
+]
+[e E1107 . `uc
+CW 1
+DATA 2
+COMMAND 3
+]
+[e E1112 . `uc
+DATA_END 16
+DATA_CONTINUE 17
+]
+"6 /Applications/microchip/xc8/v1.35/sources/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.35/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"62 /Applications/microchip/xc8/v1.35/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.35/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.35/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.35/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"30 /Users/hirofumi/MPLABXProjects/master_test.X/main.c
+[v _main main `(i  1 e 2 0 ]
+"106
+[v _pic_port_init pic_port_init `(v  1 s 0 pic_port_init ]
+"97 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _sent_data_set sent_data_set `(uc  1 e 1 0 ]
+"138
+[v _send_data_master send_data_master `(v  1 e 0 0 ]
+"188
+[v _receive_data_master receive_data_master `(v  1 e 0 0 ]
+"237
+[v _extract_receive_packet extract_receive_packet `(v  1 e 0 0 ]
+"271
+[v _tx_packet_clear tx_packet_clear `(v  1 e 0 0 ]
+"302
+[v _rx_packet_clear rx_packet_clear `(v  1 e 0 0 ]
+"326
+[v _flag_check flag_check `(v  1 e 0 0 ]
+"365
+[v _uint8_data_set uint8_data_set `(v  1 s 0 uint8_data_set ]
+"387
+[v _uint16_data_set uint16_data_set `(v  1 s 0 uint16_data_set ]
+"416
+[v _double_data_set double_data_set `(v  1 s 0 double_data_set ]
+"445
+[v _uint16_to_byte_array uint16_to_byte_array `(v  1 s 0 uint16_to_byte_array ]
+"467
+[v _double_to_byte_array double_to_byte_array `(v  1 s 0 double_to_byte_array ]
+"37 /Users/hirofumi/MPLABXProjects/master_test.X/spi_master.c
+[v _spi_master_start spi_master_start `(v  1 e 0 0 ]
+"85
+[v _spi_master_send spi_master_send `(v  1 e 0 0 ]
+"149
+[v _spi_master_receive spi_master_receive `(v  1 e 0 0 ]
+"37 /Users/hirofumi/MPLABXProjects/master_test.X/uart.c
+[v _uart_init uart_init `(v  1 e 0 0 ]
+"60
+[v _put_char put_char `(v  1 e 0 0 ]
+"76
+[v _put_string put_string `(v  1 e 0 0 ]
+"66 /Users/hirofumi/MPLABXProjects/master_test.X/uint8_to_string.c
+[v _process_100 process_100 `(v  1 s 0 process_100 ]
+"88
+[v _process_10 process_10 `(v  1 s 0 process_10 ]
+"110
+[v _process_1 process_1 `(v  1 s 0 process_1 ]
+"160 /Applications/microchip/xc8/v1.35/include/pic16f877a.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"209
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"270
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S171 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"287
+[u S180 . 1 `S171 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES180  1 e 1 @7 ]
+"331
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"392
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
+"787
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+[s S56 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"813
+[s S62 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S67 . 1 `S56 1 . 1 0 `S62 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES67  1 e 1 @20 ]
+"937
+[v _RCSTA RCSTA `VEuc  1 e 1 @24 ]
+"1031
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1037
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"1288
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1337
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1398
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+[s S35 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1415
+[u S44 . 1 `S35 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES44  1 e 1 @135 ]
+"1459
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1520
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+[s S82 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"1836
+[s S91 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S96 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S102 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S107 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S112 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S117 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S122 . 1 `S82 1 . 1 0 `S91 1 . 1 0 `S96 1 . 1 0 `S102 1 . 1 0 `S107 1 . 1 0 `S112 1 . 1 0 `S117 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES122  1 e 1 @148 ]
+"1950
+[v _TXSTA TXSTA `VEuc  1 e 1 @152 ]
+"2030
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"2559
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"2575
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"2715
+[v _TRISC6 TRISC6 `VEb  1 e 0 @1086 ]
+"2717
+[v _TRISC7 TRISC7 `VEb  1 e 0 @1087 ]
+"2755
+[v _TXIF TXIF `VEb  1 e 0 @100 ]
+[s S325 . 33 `uc 1 data_type 1 0 `uc 1 payload_len 1 1 `[30]uc 1 payload 30 2 `uc 1 data_end_command 1 32 ]
+"49 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _tx_packet tx_packet `S325  1 s 33 tx_packet ]
+"50
+[v _rx_packet rx_packet `S325  1 s 33 rx_packet ]
+"54
+[v _rx_packet_status rx_packet_status `E1097  1 e 1 0 ]
+"30 /Users/hirofumi/MPLABXProjects/master_test.X/main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"40
+[v main@r_data r_data `[30]uc  1 a 30 16 ]
+"41
+[v main@r_data_len r_data_len `uc  1 a 1 49 ]
+"38
+[v main@i i `uc  1 a 1 48 ]
+"69
+[v main@cmd cmd `uc  1 a 1 47 ]
+"39
+[v main@r_data_type r_data_type `uc  1 a 1 46 ]
+"93
+} 0
+"37 /Users/hirofumi/MPLABXProjects/master_test.X/uart.c
+[v _uart_init uart_init `(v  1 e 0 0 ]
+{
+"47
+} 0
+"37 /Users/hirofumi/MPLABXProjects/master_test.X/spi_master.c
+[v _spi_master_start spi_master_start `(v  1 e 0 0 ]
+{
+"70
+} 0
+"97 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _sent_data_set sent_data_set `(uc  1 e 1 0 ]
+{
+[v sent_data_set@p_data p_data `*.4v  1 a 1 wreg ]
+[v sent_data_set@p_data p_data `*.4v  1 a 1 wreg ]
+[v sent_data_set@data_len data_len `uc  1 p 1 12 ]
+[v sent_data_set@byte_of_type byte_of_type `uc  1 p 1 13 ]
+"100
+[v sent_data_set@p_data p_data `*.4v  1 a 1 12 ]
+"123
+} 0
+"365
+[v _uint8_data_set uint8_data_set `(v  1 s 0 uint8_data_set ]
+{
+[v uint8_data_set@p_data p_data `*.4uc  1 a 1 wreg ]
+[v uint8_data_set@p_data p_data `*.4uc  1 a 1 wreg ]
+[v uint8_data_set@data_len data_len `uc  1 p 1 0 ]
+[v uint8_data_set@p_data p_data `*.4uc  1 a 1 2 ]
+"373
+} 0
+"387
+[v _uint16_data_set uint16_data_set `(v  1 s 0 uint16_data_set ]
+{
+[v uint16_data_set@p_data p_data `*.4ui  1 a 1 wreg ]
+"389
+[v uint16_data_set@buf buf `[3]uc  1 a 3 7 ]
+"390
+[v uint16_data_set@i i `uc  1 a 1 11 ]
+"387
+[v uint16_data_set@p_data p_data `*.4ui  1 a 1 wreg ]
+[v uint16_data_set@data_len data_len `uc  1 p 1 5 ]
+[v uint16_data_set@p_data p_data `*.4ui  1 a 1 10 ]
+"402
+} 0
+"445
+[v _uint16_to_byte_array uint16_to_byte_array `(v  1 s 0 uint16_to_byte_array ]
+{
+[v uint16_to_byte_array@p_data p_data `*.4ui  1 a 1 wreg ]
+[v uint16_to_byte_array@p_data p_data `*.4ui  1 a 1 wreg ]
+[v uint16_to_byte_array@p_data_array p_data_array `*.1uc  1 p 1 0 ]
+"447
+[v uint16_to_byte_array@bit_mask bit_mask `DCCui  1 s 2 bit_mask ]
+"450
+[v uint16_to_byte_array@p_data p_data `*.4ui  1 a 1 4 ]
+"453
+} 0
+"416
+[v _double_data_set double_data_set `(v  1 s 0 double_data_set ]
+{
+[v double_data_set@p_data p_data `*.4d  1 a 1 wreg ]
+"418
+[v double_data_set@buf buf `[5]uc  1 a 5 0 ]
+"419
+[v double_data_set@i i `uc  1 a 1 6 ]
+"416
+[v double_data_set@p_data p_data `*.4d  1 a 1 wreg ]
+[v double_data_set@data_len data_len `uc  1 p 1 9 ]
+[v double_data_set@p_data p_data `*.4d  1 a 1 5 ]
+"431
+} 0
+"467
+[v _double_to_byte_array double_to_byte_array `(v  1 s 0 double_to_byte_array ]
+{
+[v double_to_byte_array@p_data p_data `*.4d  1 a 1 wreg ]
+[u S445 . 4 `d 1 data 3 0 `[4]uc 1 array 4 0 ]
+"474
+[v double_to_byte_array@converter converter `S445  1 a 4 3 ]
+"469
+[v double_to_byte_array@i i `uc  1 a 1 8 ]
+"467
+[v double_to_byte_array@p_data p_data `*.4d  1 a 1 wreg ]
+[v double_to_byte_array@p_data_array p_data_array `*.4uc  1 p 1 0 ]
+"477
+[v double_to_byte_array@p_data p_data `*.4d  1 a 1 7 ]
+"487
+} 0
+"15 /Applications/microchip/xc8/v1.35/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"138 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _send_data_master send_data_master `(v  1 e 0 0 ]
+{
+[v send_data_master@destination destination `E1101  1 a 1 wreg ]
+"140
+[v send_data_master@i i `i  1 a 2 8 ]
+"138
+[v send_data_master@destination destination `E1101  1 a 1 wreg ]
+[v send_data_master@data_type data_type `E1107  1 p 1 4 ]
+[v send_data_master@data_end_command data_end_command `E1112  1 p 1 5 ]
+"143
+[v send_data_master@destination destination `E1101  1 a 1 10 ]
+"175
+} 0
+"271
+[v _tx_packet_clear tx_packet_clear `(v  1 e 0 0 ]
+{
+"273
+[v tx_packet_clear@i i `i  1 a 2 0 ]
+"289
+} 0
+"188
+[v _receive_data_master receive_data_master `(v  1 e 0 0 ]
+{
+[v receive_data_master@destination destination `E1101  1 a 1 wreg ]
+"190
+[v receive_data_master@i i `uc  1 a 1 6 ]
+"188
+[v receive_data_master@destination destination `E1101  1 a 1 wreg ]
+"193
+[v receive_data_master@destination destination `E1101  1 a 1 7 ]
+"221
+} 0
+"76 /Users/hirofumi/MPLABXProjects/master_test.X/uart.c
+[v _put_string put_string `(v  1 e 0 0 ]
+{
+[v put_string@str str `*.24uc  1 a 1 wreg ]
+[v put_string@str str `*.24uc  1 a 1 wreg ]
+[v put_string@str str `*.24uc  1 a 1 2 ]
+"85
+} 0
+"60
+[v _put_char put_char `(v  1 e 0 0 ]
+{
+[v put_char@byte_data byte_data `uc  1 a 1 wreg ]
+[v put_char@byte_data byte_data `uc  1 a 1 wreg ]
+[v put_char@byte_data byte_data `uc  1 a 1 0 ]
+"70
+} 0
+"106 /Users/hirofumi/MPLABXProjects/master_test.X/main.c
+[v _pic_port_init pic_port_init `(v  1 s 0 pic_port_init ]
+{
+"121
+} 0
+"326 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _flag_check flag_check `(v  1 e 0 0 ]
+{
+[v flag_check@destination destination `E1101  1 a 1 wreg ]
+"328
+[v flag_check@flag flag `E1097  1 a 1 7 ]
+"326
+[v flag_check@destination destination `E1101  1 a 1 wreg ]
+"328
+[v flag_check@destination destination `E1101  1 a 1 8 ]
+"348
+} 0
+"85 /Users/hirofumi/MPLABXProjects/master_test.X/spi_master.c
+[v _spi_master_send spi_master_send `(v  1 e 0 0 ]
+{
+[v spi_master_send@destination destination `E1101  1 a 1 wreg ]
+"87
+[v spi_master_send@buf buf `uc  1 a 1 2 ]
+"85
+[v spi_master_send@destination destination `E1101  1 a 1 wreg ]
+[v spi_master_send@data data `uc  1 p 1 0 ]
+"90
+[v spi_master_send@destination destination `E1101  1 a 1 3 ]
+"135
+} 0
+"149
+[v _spi_master_receive spi_master_receive `(v  1 e 0 0 ]
+{
+[v spi_master_receive@destination destination `E1101  1 a 1 wreg ]
+"151
+[v spi_master_receive@buf buf `uc  1 a 1 2 ]
+"149
+[v spi_master_receive@destination destination `E1101  1 a 1 wreg ]
+[v spi_master_receive@p_get p_get `*.4uc  1 p 1 0 ]
+"154
+[v spi_master_receive@destination destination `E1101  1 a 1 3 ]
+"199
+} 0
+"237 /Users/hirofumi/MPLABXProjects/master_test.X/protocol.c
+[v _extract_receive_packet extract_receive_packet `(v  1 e 0 0 ]
+{
+[v extract_receive_packet@p_data_type_buf p_data_type_buf `*.4uc  1 a 1 wreg ]
+"239
+[v extract_receive_packet@i i `uc  1 a 1 6 ]
+"237
+[v extract_receive_packet@p_data_type_buf p_data_type_buf `*.4uc  1 a 1 wreg ]
+[v extract_receive_packet@p_data_buf p_data_buf `*.4uc  1 p 1 2 ]
+[v extract_receive_packet@p_data_len_buf p_data_len_buf `*.4uc  1 p 1 3 ]
+"242
+[v extract_receive_packet@p_data_type_buf p_data_type_buf `*.4uc  1 a 1 5 ]
+"258
+} 0
+"302
+[v _rx_packet_clear rx_packet_clear `(v  1 e 0 0 ]
+{
+"304
+[v rx_packet_clear@i i `i  1 a 2 0 ]
+"320
+} 0
