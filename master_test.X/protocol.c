@@ -274,7 +274,7 @@ void extract_receive_packet(uint8_t *p_data_type_buf, uint8_t *p_data_buf, uint8
  *===================================================*/
 void tx_packet_clear(void)
 {
-    int i;
+    uint8_t i;
 
     /* データタイプをクリア */
     tx_packet.data_type = 0;
@@ -305,7 +305,7 @@ void tx_packet_clear(void)
  *===================================================*/
 void rx_packet_clear(void)
 {
-    int i;
+    uint8_t i;
 
     /* データタイプをクリア */
     rx_packet.data_type = 0;
