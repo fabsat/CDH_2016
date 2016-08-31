@@ -341,10 +341,10 @@ void rx_packet_clear(void)
  *---------------------------------------------------*/ 
 static void flag_check(destination_t destination)
 {
-    bool_t flag = FALSE;
+    bool_t flag;
 
     /* flagがTRUEになるまで繰り返す */
-    while(flag == FALSE)
+    do
     {
         /* プリアンブルを送信 */
         spi_master_send(destination, 0b10101010);
@@ -359,8 +359,7 @@ static void flag_check(destination_t destination)
 
         /* 500[ms]インターバルをあける */
         __delay_ms(500);
-    }
-
+    } while(flag == FALSE);
 }
 
 
